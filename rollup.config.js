@@ -15,7 +15,7 @@ module.exports = () => {
       { file: `cjs/${pkg.main}`, format: 'cjs', sourcemap: true },
       { file: `esm/${pkg.module}`, format: 'es', sourcemap: true },
     ],
-    external: ['stream'],
+    external: ['stream', 'react', 'react-dom'],
     inlineDynamicImports: true,
     plugins: [
       babel({
