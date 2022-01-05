@@ -1,5 +1,4 @@
 import commonjs from '@rollup/plugin-commonjs'
-import { nodeResolve } from '@rollup/plugin-node-resolve'
 
 import babel from '@rollup/plugin-babel'
 import svg from 'rollup-plugin-svg'
@@ -19,10 +18,9 @@ module.exports = () => {
     inlineDynamicImports: true,
     plugins: [
       babel({
-        presets: ['@babel/preset-react'],
+        presets: [['@babel/preset-react', { runtime: 'automatic' }]],
         babelHelpers: 'bundled',
       }),
-      nodeResolve({ preferBuiltins: false }), // or `true`
       commonjs(),
       svg(),
     ],
