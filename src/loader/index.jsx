@@ -1,23 +1,17 @@
-import { useState } from 'react'
 import { Wrapper } from './style.jsx'
 import Spinner from '../spinner/index.jsx'
 
-export function useLoadingStatus() {
-  const [isLoading, setIsLoading] = useState(false)
+/*
+  Type:
+  - global
+  - local
+ */
 
-  function showLoader(loading) {
-    setIsLoading(loading)
-  }
+const Loader = (props) => {
+  const type = props.variation || 'local'
 
-  return {
-    isLoading,
-    showLoader,
-  }
-}
-
-const Loader = () => {
   return (
-    <Wrapper>
+    <Wrapper className={props.className} type={type}>
       <Spinner />
     </Wrapper>
   )
