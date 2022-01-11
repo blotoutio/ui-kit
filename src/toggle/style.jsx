@@ -29,7 +29,7 @@ export const Option = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: ${({ isDisable }) => (isDisable ? 'default' : 'cursor')};
+  cursor: ${({ isDisable }) => (isDisable ? 'default' : 'pointer')};
   padding: 0 16px;
   border-radius: 3px;
   font-size: 16px;

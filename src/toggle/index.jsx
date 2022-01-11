@@ -13,6 +13,7 @@ const Toggle = ({ selected, options, handleChange, isDisable, className }) => {
           key={option.value}
           onClick={isDisable ? undefined : handleChange.bind(this, option)}
           active={selected.value === option.value}
+          isDisable={isDisable}
         >
           {option.label}
         </Option>
