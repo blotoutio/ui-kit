@@ -1,6 +1,6 @@
 import Input from '../../input'
 import { Form } from '../common/sharedStyle'
-import * as icons from '../../icons/index.jsx'
+import * as icons from '../../icons'
 
 const types = ['text', 'password']
 const sizes = ['S', 'M']

@@ -16,16 +16,16 @@ import {
   HeaderSection,
   FooterSection,
   LoaderContainer,
-} from './style.jsx'
+} from './style'
 import 'jspdf-autotable'
 import jsPDF from 'jspdf'
-import Input from '../input/index.jsx'
-import { Download, Search } from '../icons/index.jsx'
-import { SimpleSelect } from '../select/index.jsx'
-import { perPageOptions } from '../common/utils.jsx'
+import Input from '../input'
+import { Download, Search } from '../icons'
+import { SimpleSelect } from '../select'
+import { perPageOptions } from '../common/utils'
 import { neutrals40 } from '../common/colors'
 import * as ReactDomServer from 'react-dom/server'
-import Spinner from '../spinner/index.jsx'
+import Spinner from '../spinner'
 
 const DataTable = ({
   rows,

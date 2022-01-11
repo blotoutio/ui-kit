@@ -1,4 +1,4 @@
-import { HelperText, LabelText } from './style.jsx'
+import { HelperText, LabelText } from './style'
 
 const FieldWrapper = (props) => {
   const getText = () => {

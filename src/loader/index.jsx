@@ -1,5 +1,5 @@
-import { Wrapper } from './style.jsx'
-import Spinner from '../spinner/index.jsx'
+import { Wrapper } from './style'
+import Spinner from '../spinner'
 
 /*
   Type:

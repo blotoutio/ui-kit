@@ -1,4 +1,4 @@
-import { Wrapper } from './style.jsx'
+import { Wrapper } from './style'
 
 const Input = (props) => {
   const inputProps = { ...props }

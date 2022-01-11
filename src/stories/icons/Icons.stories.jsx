@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as icons from '../../icons/index.jsx'
+import * as icons from '../../icons'
 import { IconWrapper, IconContainer, Icon, IconTitle } from './style'
 import Spinner from '../../spinner'
 

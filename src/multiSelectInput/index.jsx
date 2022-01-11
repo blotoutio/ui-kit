@@ -1,5 +1,5 @@
 import CreatableSelect from 'react-select/creatable'
-import { Wrapper } from './style.jsx'
+import { Wrapper } from './style'
 import { errorJuice, neutrals20 } from '../common/colors'
 
 const MultiSelectInput = (props) => {

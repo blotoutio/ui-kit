@@ -1,4 +1,4 @@
-import Spinner from '../../spinner/index'
+import Spinner from '../../spinner'
 
 export default {
   title: 'Spinner',

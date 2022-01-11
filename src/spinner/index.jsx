@@ -1,4 +1,4 @@
-import { Icon } from './style.jsx'
+import { Icon } from './style'
 
 const Spinner = ({ type }) => {
   return <Icon type={type} />

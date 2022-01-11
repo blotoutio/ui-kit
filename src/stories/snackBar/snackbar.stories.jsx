@@ -1,7 +1,7 @@
-import Snackbar from '../../snackbar/index'
+import Snackbar from '../../snackbar'
 import { useState } from 'react'
-import Button from '../../button/index'
-import { ButtonContainer } from '../common/sharedStyle.jsx'
+import Button from '../../button'
+import { ButtonContainer } from '../common/sharedStyle'
 
 export default {
   title: 'SnackBar',

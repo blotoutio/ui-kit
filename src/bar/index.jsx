@@ -1,6 +1,6 @@
-import EChart from '../echart/index.jsx'
+import EChart from '../echart'
 import { chartColors } from '../common/constants'
-import NoResults from '../common/noResults/index.jsx'
+import NoResults from '../common/noResults'
 
 const getOptions = ({
   data,

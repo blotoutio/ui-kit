@@ -1,4 +1,4 @@
-import Table from '../../table/index'
+import Table from '../../table'
 
 export default {
   title: 'Table',

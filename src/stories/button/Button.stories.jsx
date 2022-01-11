@@ -1,6 +1,6 @@
 import Button from '../../button'
 import { TableContainer } from './style'
-import { Arrow } from '../../icons/index.jsx'
+import { Arrow } from '../../icons'
 import { ButtonContainer } from '../common/sharedStyle'
 
 const variants = ['solid', 'flat', 'outline']

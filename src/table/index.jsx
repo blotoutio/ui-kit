@@ -1,10 +1,4 @@
-import {
-  StyledHeader,
-  StyledTable,
-  StyledTd,
-  StyledTh,
-  NoData,
-} from './style.jsx'
+import { StyledHeader, StyledTable, StyledTd, StyledTh, NoData } from './style'
 
 const Table = ({ headers, rows, className, format, noData }) => {
   if (!rows || rows.length === 0) {

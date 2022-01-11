@@ -1,6 +1,6 @@
 import { chartColors } from '../common/constants'
-import EChart from '../echart/index.jsx'
-import NoResults from '../common/noResults/index.jsx'
+import EChart from '../echart'
+import NoResults from '../common/noResults'
 
 const getOptions = (data) => {
   const series = data.bars.map((bar, index) => {

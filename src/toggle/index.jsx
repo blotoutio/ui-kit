@@ -1,13 +1,13 @@
-import { Wrapper, Option } from './style.jsx'
+import { Wrapper, Option } from './style'
 
-const Toggle = ({ selected, options, handleChange, isDisable }) => {
+const Toggle = ({ selected, options, handleChange, isDisable, className }) => {
   if (!selected) {
     console.error('Selected for toggle was not provided')
     return null
   }
 
   return (
-    <Wrapper isDisable={isDisable}>
+    <Wrapper isDisable={isDisable} className={className}>
       {options.map((option) => (
         <Option
           key={option.value}

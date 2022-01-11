@@ -4,7 +4,7 @@ import {
   StyledCreatableSelect,
   StyledSelect,
   Wrapper,
-} from './style.jsx'
+} from './style'
 import { errorJuice, neutrals10, neutrals80 } from '../common/colors'
 
 const regularStyle = (hasError) => ({

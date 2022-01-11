@@ -1,5 +1,5 @@
-import { Content, Wrapper } from './style.jsx'
-import Loader from '../loader/index.jsx'
+import { Content, Wrapper } from './style'
+import Loader from '../loader'
 
 const Box = (props) => {
   return (

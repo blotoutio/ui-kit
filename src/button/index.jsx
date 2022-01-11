@@ -1,4 +1,4 @@
-import { Action, External, Icon, Internal, Wrapper } from './style.jsx'
+import { Action, External, Icon, Internal, Wrapper } from './style'
 
 /*
   Type:

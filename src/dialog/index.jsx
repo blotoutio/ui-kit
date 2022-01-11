@@ -1,13 +1,5 @@
-import {
-  Close,
-  Content,
-  Header,
-  Modal,
-  Title,
-  Wrapper,
-  Outline,
-} from './style.jsx'
-import { Close as CloseIcon } from '../icons/index.jsx'
+import { Close, Content, Header, Modal, Title, Wrapper, Outline } from './style'
+import { Close as CloseIcon } from '../icons'
 
 const Dialog = ({
   className,

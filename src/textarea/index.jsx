@@ -1,4 +1,4 @@
-import { Wrapper, TextareaField } from './style.jsx'
+import { Wrapper, TextareaField } from './style'
 
 const Textarea = (props) => {
   const textProps = { ...props }

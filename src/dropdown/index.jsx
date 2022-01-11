@@ -1,4 +1,4 @@
-import { Arrow, Check, RemoveCircle, Search } from '../icons/index.jsx'
+import { Arrow, Check, RemoveCircle, Search } from '../icons'
 import {
   Wrapper,
   Outline,
@@ -13,12 +13,12 @@ import {
   ButtonWrapper,
   Left,
   Right,
-} from './style.jsx'
+} from './style'
 import { useState, Fragment } from 'react'
 import Select, { components } from 'react-select'
 import AsyncSelect from 'react-select/async'
 import { neutrals80 } from '../common/colors'
-import Button from '../button/index.jsx'
+import Button from '../button'
 
 const selectStyles = (showSearch) => {
   const general = {
@@ -75,7 +75,7 @@ const Menu = (props) => {
     <Fragment>
       <components.Menu {...props}>
         <div>
-          {props.selectProps.hasAdd && (
+          {props.selectProps.handleAdd && (
             <ButtonWrapper>
               <Button
                 type={'secondary'}
@@ -163,9 +163,9 @@ const Dropdown = (props) => {
       componentProps.placeholder = `Select ${category.category}`
     }
 
-    if (props.hasAdd) {
+    if (props.handleAdd) {
       componentProps.handleAdd = props.handleAdd
-      componentProps.hasAdd = props.hasAdd
+      componentProps.hasAdd = !!props.handleAdd
     }
 
     return (

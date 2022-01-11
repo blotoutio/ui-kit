@@ -1,4 +1,4 @@
-import { NoData } from './style.jsx'
+import { NoData } from './style'
 import noResults from './no_results.svg'
 
 const NoResults = ({ text, noIcon }) => (

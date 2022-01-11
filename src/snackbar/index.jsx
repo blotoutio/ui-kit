@@ -1,5 +1,5 @@
-import { Wrapper, Text, IconWrapper } from './style.jsx'
-import { Close } from '../icons/index.jsx'
+import { Wrapper, Text, IconWrapper } from './style'
+import { Close } from '../icons'
 import { useEffect } from 'react'
 
 const Snackbar = ({ onClose, variant, message }) => {

@@ -4,4 +4,4 @@ storybook-static
 .idea
 esm
 cjs
-/index.d.ts
+/*.d.ts

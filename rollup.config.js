@@ -1,3 +1,4 @@
+import resolve from 'rollup-plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import babel from '@rollup/plugin-babel'
@@ -12,6 +13,11 @@ module.exports = (commandLineArgs) => {
     external: ['stream', 'react', 'react-dom'],
     inlineDynamicImports: true,
     plugins: [
+      resolve({
+        browser: true,
+        jsnext: true,
+        extensions: ['.js', '.jsx'],
+      }),
       babel({
         presets: [['@babel/preset-react', { runtime: 'automatic' }]],
         babelHelpers: 'bundled',
@@ -21,7 +27,7 @@ module.exports = (commandLineArgs) => {
       ...(!commandLineArgs.watch
         ? [
             copy({
-              targets: [{ src: 'src/index.d.ts', dest: './' }],
+              targets: [{ src: 'src/typings/*', dest: './' }],
             }),
           ]
         : []),
@@ -32,16 +38,16 @@ module.exports = (commandLineArgs) => {
     {
       input: './src/index.jsx',
       output: [
-        { file: `cjs/${pkg.main}`, format: 'cjs', sourcemap: true },
-        { file: `esm/${pkg.module}`, format: 'es', sourcemap: true },
+        { file: `cjs/index.js`, format: 'cjs', sourcemap: true },
+        { file: `esm/index.js`, format: 'es', sourcemap: true },
       ],
       ...config,
     },
     {
       input: './src/icons/index.jsx',
       output: [
-        { file: `cjs/${pkg.iconmain}`, format: 'cjs', sourcemap: true },
-        { file: `esm/${pkg.iconmodule}`, format: 'es', sourcemap: true },
+        { file: `cjs/icons.js`, format: 'cjs', sourcemap: true },
+        { file: `esm/icons.js`, format: 'es', sourcemap: true },
       ],
       ...config,
     },

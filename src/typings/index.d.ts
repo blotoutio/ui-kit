@@ -2,7 +2,8 @@ import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react'
 
 interface SelectValue {
   label: string
-  value: number
+  value: number | string
+  [key: string]: number | string
 }
 
 interface BarInterface {
@@ -12,76 +13,61 @@ interface BarInterface {
     count: number[][]
     bars: string[]
   }
-  vertical?: boolean
   labelFormatter?: (label: string) => string
+  id?: string
   percent?: boolean
   showLegend?: boolean
-  id?: string
+  vertical?: boolean
 }
 
 interface BoxInterface {
   className?: string
-  type?: 'slim' | 'fit'
   loading?: boolean
+  type?: 'slim' | 'fit'
 }
 
 interface ButtonInterface {
+  onClick: () => void
+  children?: React.ReactChild | React.ReactChild[]
   className?: string
-  type?: 'primary' | 'secondary' | 'neutral'
-  variant?: 'solid' | 'flat' | 'outline'
-  size?: 'M' | 'S'
-  isDisabled?: boolean
-  id?: string
-  iconPosition?: 'left' | 'right'
-  to?: string
   href?: string
   icon?: React.ReactChild | React.ReactChild[]
-  children?: React.ReactChild | React.ReactChild[]
-  onClick: () => void
+  iconPosition?: 'left' | 'right'
+  id?: string
+  isDisabled?: boolean
+  size?: 'M' | 'S'
+  to?: string
+  type?: 'primary' | 'secondary' | 'neutral'
+  variant?: 'solid' | 'flat' | 'outline'
 }
 
 interface DataTableInterface {
   rows: string[][] | React.ReactElement[][]
-  noData?: string[]
   headers: string[] | React.ReactElement[]
-  emptyCell?: string
   className?: string
   Component?: React.ReactChild | React.ReactChild[]
-  loader?: boolean
-  type?: 'table'
-  perPage?: SelectValue
   downloadable?: boolean
-  searchable?: boolean
+  emptyCell?: string
   hasPagination?: boolean
+  loader?: boolean
+  noData?: string[]
+  perPage?: SelectValue
+  searchable?: boolean
+  type?: 'table'
 }
 
 interface DialogInterface {
-  className?: string
-  title: string
   children: React.ReactChild | React.ReactChild[]
+  title: string
+  className?: string
+  disabledOutline?: boolean
   onClose: () => void
   variant?: 'normal' | 'form'
-  disabledOutline?: boolean
 }
 
 interface DropdownInterface {
-  isSearchable?: boolean
-  options: SelectValue[]
-  placeholder?: string
-  hasAdd?: boolean
-  handleAdd?: () => void
-  position?: 'left'
-  isMulti?: boolean
   handleChange: (value: SelectValue) => void
-  value: {
-    label: string
-    value: string
-    number: number
-  }
-  loadOptions: (arg0: string) => SelectValue[]
-  noOptionsMessage?: (arg0: string) => string
-  isClearable?: boolean
-  sideHeading?: string
+  value: SelectValue
   category?: {
     label: string
     value: string
@@ -89,28 +75,37 @@ interface DropdownInterface {
   }
   children: React.ReactChild | React.ReactChild[]
   className?: string
+  handleAdd?: () => void
   id?: string
+  isClearable?: boolean
+  isMulti?: boolean
+  isSearchable?: boolean
+  loadOptions?: (arg0: string) => SelectValue[]
+  noOptionsMessage?: (arg0: string) => string
+  options?: SelectValue[]
+  placeholder?: string
+  position?: 'left'
+  sideHeading?: string
 }
 
 interface FieldWrapperInterface {
-  className?: string
-  html?: boolean
   children: React.ReactChild | React.ReactChild[]
-  helperType?: string
+  className?: string
   helperText?: string
+  helperType?: string
+  html?: boolean
   label?: string
 }
 
 interface InputInterface extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  error?: string
-  icon?: boolean
   color?: string
+  error?: string
   forwardRef?: React.ReactElement
+  icon?: boolean
 }
 
 interface LineInterface {
-  id?: string
   data: {
     bars: string[]
     categories: string[]
@@ -121,57 +116,63 @@ interface LineInterface {
       }
     ]
   }
+  id?: string
+}
+
+interface LoaderInterface {
+  className?: string
+  variation?: 'global' | 'local'
 }
 
 interface MultiSelectInputInterface {
-  minHeight?: number
-  error?: boolean
-  className?: string
+  handleChange: (value: SelectValue, type: string) => void
+  handleInputChange: (value: string) => void
+  handleKeyDown: (value: SelectValue) => void
   inputValue: string | number
+  value: string[]
+  className?: string
+  error?: boolean
   isClearable?: boolean
   isMulti?: boolean
-  handleChange: (value: SelectValue, type: string) => void
-  handleInputChange?: () => void
-  handleKeyDown?: (value: SelectValue) => void
+  minHeight?: number
   placeholder?: string
-  value: string[]
 }
 
 interface SimpleSelectInterface {
+  handleChange: (value: SelectValue) => void
+  handleInputChange?: (value: string) => void
   value: SelectValue
-  showError?: boolean
-  type?: 'form'
-  styles?: Record<string, number | string>[]
+  handleKeyDown?: (value: SelectValue) => void
   isClearable?: boolean
   isMulti?: boolean
-  handleChange: (value: SelectValue) => void
-  handleInputChange?: () => void
-  handleKeyDown?: (value: SelectValue) => void
   placeholder?: string
+  showError?: boolean
+  styles?: Record<string, number | string>[]
+  type?: 'form'
 }
 
 interface SimpleAsyncSelectInterface {
-  value: SelectValue
-  showError?: boolean
-  type?: 'form'
-  id?: string
+  handleChange: (value: SelectValue[]) => void
   loadOptions: (arg0: string) => {
     label: string
     value: number
   }
+  value: SelectValue
   classNamePrefix?: string
-  handleChange: (value: SelectValue[]) => void
+  id?: string
+  isClearable?: boolean
   isDisabled?: boolean
   isMulti?: boolean
-  isClearable?: boolean
   noOptionsMessage?: (arg0: string) => string
   placeholder?: string
+  showError?: boolean
+  type?: 'form'
 }
 
 interface SnackbarInterface {
+  message: string
   onClose: () => void
   variant?: 'success' | 'error'
-  message: string
 }
 
 interface SpinnerInterface {
@@ -179,7 +180,6 @@ interface SpinnerInterface {
 }
 
 interface TableInterface {
-  headers?: string[] | React.ReactElement[]
   rows: string[][] | React.ReactElement[][]
   className?: string
   format?: (
@@ -187,6 +187,7 @@ interface TableInterface {
     column: number,
     cellvalues: string | React.ReactElement
   ) => string
+  headers?: string[] | React.ReactElement[]
   noData?: string[]
 }
 
@@ -198,10 +199,11 @@ interface TextareaInterface
 }
 
 interface ToggleInterface {
-  options: SelectValue[]
-  selected?: SelectValue
-  isDisable?: boolean
   handleChange: (value: SelectValue) => void
+  options: SelectValue[]
+  selected: SelectValue
+  className?: string
+  isDisable?: boolean
 }
 
 export declare const Bar: (props: BarInterface) => React.ReactElement
@@ -217,6 +219,7 @@ export declare const FieldWrapper: (
 ) => React.ReactElement
 export declare const Input: (props: InputInterface) => React.ReactElement
 export declare const Line: (props: LineInterface) => React.ReactElement
+export declare const Loader: (props: LoaderInterface) => React.ReactElement
 export declare const MultiSelectInput: (
   props: MultiSelectInputInterface
 ) => React.ReactElement

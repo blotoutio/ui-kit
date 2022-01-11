@@ -1,6 +1,6 @@
-import Dialog from '../../dialog/index'
-import Button from '../../button/index'
-import { ButtonContainer } from '../common/sharedStyle.jsx'
+import Dialog from '../../dialog'
+import Button from '../../button'
+import { ButtonContainer } from '../common/sharedStyle'
 import { useState } from 'react'
 
 export default {
