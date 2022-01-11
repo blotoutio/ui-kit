@@ -1,10 +1,10 @@
 import commonjs from '@rollup/plugin-commonjs'
-
+import copy from 'rollup-plugin-copy'
 import babel from '@rollup/plugin-babel'
 import svg from 'rollup-plugin-svg'
 import pkg from './package.json'
 
-module.exports = () => {
+module.exports = (commandLineArgs) => {
   delete pkg.devDependencies
   delete pkg.scripts
 
@@ -18,8 +18,16 @@ module.exports = () => {
       }),
       commonjs(),
       svg(),
+      ...(!commandLineArgs.watch
+        ? [
+            copy({
+              targets: [{ src: 'src/index.d.ts', dest: './' }],
+            }),
+          ]
+        : []),
     ],
   }
+
   return [
     {
       input: './src/index.jsx',
