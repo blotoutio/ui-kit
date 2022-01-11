@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import babel from '@rollup/plugin-babel'
 import svg from 'rollup-plugin-svg'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import pkg from './package.json'
 
 module.exports = (commandLineArgs) => {
@@ -13,14 +14,16 @@ module.exports = (commandLineArgs) => {
     external: ['stream', 'react', 'react-dom'],
     inlineDynamicImports: true,
     plugins: [
+      peerDepsExternal(),
+      babel({
+        presets: [['@babel/preset-react', { runtime: 'automatic' }]],
+        babelHelpers: 'bundled',
+        exclude: 'node_modules/**',
+      }),
       resolve({
         browser: true,
         jsnext: true,
         extensions: ['.js', '.jsx'],
-      }),
-      babel({
-        presets: [['@babel/preset-react', { runtime: 'automatic' }]],
-        babelHelpers: 'bundled',
       }),
       commonjs(),
       svg(),
