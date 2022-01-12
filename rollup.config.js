@@ -26,7 +26,7 @@ module.exports = (commandLineArgs) => {
         extensions: ['.js', '.jsx'],
       }),
       commonjs(),
-      svg(),
+      svg({ base64: true }),
       ...(!commandLineArgs.watch
         ? [
             copy({
