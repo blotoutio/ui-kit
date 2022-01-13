@@ -64,6 +64,8 @@ export const NoData = styled.td`
   color: ${neutrals70};
   text-align: center;
   padding: 20px;
+  border-left: 1px solid ${neutrals20};
+  border-right: 1px solid ${neutrals20};
 `
 
 export const StyledTr = styled.tr`
