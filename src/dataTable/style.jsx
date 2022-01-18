@@ -50,6 +50,11 @@ export const StyledTh = styled.th`
 export const StyledTd = styled.td`
   padding: 12px 20px;
   font-variation-settings: 'wght' 400;
+  vertical-align: top;
+
+  b {
+    font-variation-settings: 'wght' 500;
+  }
 
   &:first-of-type {
     border-left: 1px solid ${neutrals20};
