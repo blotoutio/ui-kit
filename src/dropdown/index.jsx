@@ -138,7 +138,7 @@ const Dropdown = (props) => {
     }
 
     props.handleChange(e)
-    hideDropDown()
+    if (props.closeMenuOnSelect) hideDropDown()
   }
 
   const selectComponent = (item, category) => {

@@ -86,6 +86,7 @@ export const SimpleSelect = (props) => {
         isClearable={props.isClearable}
         placeholder={props.placeholder}
         noOptionsMessage={props.noOptionsMessage}
+        closeMenuOnSelect={props.closeMenuOnSelect}
         isMulti={props.isMulti}
         isSearchable
         menuPlacement='auto'
@@ -147,6 +148,7 @@ export const SimpleAsyncSelect = (props) => {
         isSearchable
         defaultOptions
         noOptionsMessage={props.noOptionsMessage}
+        closeMenuOnSelect={props.closeMenuOnSelect}
         placeholder={props.placeholder}
         menuPlacement='auto'
         {...more}
