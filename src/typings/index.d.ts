@@ -1,4 +1,5 @@
 import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react'
+import { EChartsType, EChartsOption } from 'echarts'
 
 interface SelectValue {
   label: string
@@ -6,7 +7,7 @@ interface SelectValue {
   [key: string]: number | string
 }
 
-interface BarInterface {
+interface BarChartInterface {
   data: {
     categories: string[]
     data: string[][]
@@ -88,6 +89,14 @@ interface DropdownInterface {
   sideHeading?: string
 }
 
+interface EChartInterface {
+  options: EChartsOption
+  config?: {
+    notMerge: boolean
+  }
+  id?: string
+}
+
 interface FieldWrapperInterface {
   children: React.ReactChild | React.ReactChild[]
   className?: string
@@ -105,7 +114,7 @@ interface InputInterface extends InputHTMLAttributes<HTMLInputElement> {
   icon?: boolean
 }
 
-interface LineInterface {
+interface LineChartInterface {
   data: {
     bars: string[]
     categories: string[]
@@ -206,7 +215,7 @@ interface ToggleInterface {
   isDisable?: boolean
 }
 
-export declare const Bar: (props: BarInterface) => React.ReactElement
+export declare const BarChart: (props: BarChartInterface) => React.ReactElement
 export declare const Box: (props: BoxInterface) => React.ReactElement
 export declare const Button: (props: ButtonInterface) => React.ReactElement
 export declare const DataTable: (
@@ -214,14 +223,20 @@ export declare const DataTable: (
 ) => React.ReactElement
 export declare const Dialog: (props: DialogInterface) => React.ReactElement
 export declare const Dropdown: (props: DropdownInterface) => React.ReactElement
+export declare const EChart: (props: EChartInterface) => React.ReactElement
 export declare const FieldWrapper: (
   props: FieldWrapperInterface
 ) => React.ReactElement
 export declare const Input: (props: InputInterface) => React.ReactElement
-export declare const Line: (props: LineInterface) => React.ReactElement
+export declare const LineChart: (
+  props: LineChartInterface
+) => React.ReactElement
 export declare const Loader: (props: LoaderInterface) => React.ReactElement
 export declare const MultiSelectInput: (
   props: MultiSelectInputInterface
+) => React.ReactElement
+export declare const SimpleAsyncSelect: (
+  props: SimpleAsyncSelectInterface
 ) => React.ReactElement
 export declare const SimpleSelect: (
   props: SimpleSelectInterface
