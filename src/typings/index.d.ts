@@ -104,6 +104,23 @@ interface DropdownProps {
   closeMenuOnSelect?: boolean
 }
 
+interface ButtonDropdownProps {
+  handleChange: (value: SelectValue) => void
+  value?: SelectValue | null
+  children: React.ReactNode | React.ReactNode[]
+  className?: string
+  handleAdd?: () => void
+  id?: string
+  isClearable?: boolean
+  isMulti?: boolean
+  isSearchable?: boolean
+  noOptionsMessage?: (arg0: string) => string
+  options?: SelectValue[]
+  placeholder?: string
+  position?: 'left'
+  icon: React.ReactNode | React.ReactNode[]
+}
+
 interface EChartProps {
   options: EChartsOption
   config?: {
@@ -240,6 +257,9 @@ export declare const ConfirmDialog: (
 export declare const DataTable: (props: DataTableProps) => React.ReactElement
 export declare const Dialog: (props: DialogProps) => React.ReactElement
 export declare const Dropdown: (props: DropdownProps) => React.ReactElement
+export declare const ButtonDropdown: (
+  props: ButtonDropdownProps
+) => React.ReactElement
 export declare const EChart: (props: EChartProps) => React.ReactElement
 export declare const FieldWrapper: (
   props: FieldWrapperProps
