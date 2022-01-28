@@ -7,12 +7,11 @@ import {
   OptionStyle,
   Category,
   CategoryItem,
-  RemoveIcon,
   Icon,
   BasicButton,
   ButtonWrapper,
-  Left,
-  Right,
+  Content,
+  Chips,
 } from './style'
 import { useState, Fragment } from 'react'
 import Select, { components } from 'react-select'
@@ -138,7 +137,8 @@ const Dropdown = (props) => {
     }
 
     props.handleChange(e)
-    if (props.closeMenuOnSelect) hideDropDown()
+    const closeMenuOnSelect = props.closeMenuOnSelect ?? true
+    if (closeMenuOnSelect) hideDropDown()
   }
 
   const selectComponent = (item, category) => {
@@ -223,43 +223,20 @@ const Dropdown = (props) => {
   }
 
   const getCurrent = () => {
-    if (!props.value || props.category || !props.isClearable) {
-      return {
-        hasData: false,
-        content: (
-          <span>
-            {props.sideHeading && (
-              <span className='side-heading'>
-                {props.sideHeading} {props.children && ':'}
-              </span>
-            )}
-            {props.children}
-          </span>
-        ),
-      }
+    let hasData,
+      count = 0
+    if (props.category) {
+      Object.keys(props.value).map((category) => {
+        count += props.value[category].data.length
+      })
+      hasData = count ? true : false
+    } else {
+      hasData = props.value && Object.keys(props.value).length ? true : false
     }
-
     return {
-      hasData: true,
-      content: (
-        <>
-          <span>
-            {props.sideHeading && (
-              <span className='side-heading'>{props.sideHeading}:</span>
-            )}
-            {props.children}
-          </span>
-          <RemoveIcon data-testid='cancel-icon' onClick={clearValue}>
-            <RemoveCircle />
-          </RemoveIcon>
-        </>
-      ),
+      count,
+      hasData,
     }
-  }
-
-  const clearValue = (event) => {
-    event.stopPropagation()
-    props.handleChange(null)
   }
 
   const data = getCurrent()
@@ -271,13 +248,14 @@ const Dropdown = (props) => {
         isActive={show === true}
         onClick={showDropDown}
         hasData={data.hasData}
+        size={props.size || 'M'}
       >
-        <Left>{data.content}</Left>
-        <Right>
-          <Icon position={'right'}>
-            <Arrow rotate={90} />
-          </Icon>
-        </Right>
+        {props.icon && <Icon>{props.icon}</Icon>}
+        <Content>{props.children}</Content>
+        {data.count > 0 && <Chips isActive={show === true}>{data.count}</Chips>}
+        <Icon>
+          <Arrow rotate={90} />
+        </Icon>
       </BasicButton>
       {show ? (props.category ? categoryComponent() : selectComponent()) : null}
       {show && (

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Dropdown from '../../dropdown'
+import { TimeRange } from '../../icons'
 
 const timeSeries = [
   {
@@ -29,6 +30,8 @@ const timeSeries = [
   },
 ]
 
+const sizes = ['M', 'S']
+
 export default {
   title: 'Dropdown',
 }
@@ -48,7 +51,12 @@ export const DropDown = (args) => {
     args.noOptionsMessage = () => message
   }
   return (
-    <Dropdown {...args} value={timeRange} handleChange={handleTimeRange}>
+    <Dropdown
+      {...args}
+      value={timeRange}
+      handleChange={handleTimeRange}
+      icon={<TimeRange />}
+    >
       {timeRange ? timeRange.label : 'Time Range'}
     </Dropdown>
   )
@@ -58,10 +66,18 @@ DropDown.args = {
   isSearchable: true,
   isClearable: true,
   isDisabled: false,
+  closeMenuOnSelect: true,
   options: timeSeries,
   noOptionsMessage: 'No Options',
+  size: 'M',
 }
 DropDown.component = 'DropDown'
 DropDown.parameters = {
   layout: 'centered',
+}
+DropDown.argTypes = {
+  size: {
+    options: sizes,
+    control: 'select',
+  },
 }

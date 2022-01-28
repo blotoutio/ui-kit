@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Dropdown from '../../dropdown'
+import { Funnel } from '../../icons'
 
 const filterCategories = [
   {
@@ -86,6 +87,7 @@ export const CategoryDropDown = (args) => {
       loadOptions={loadOptions}
       value={filterBy}
       handleChange={handleFilter}
+      icon={<Funnel width='14' height='16' />}
     >
       Filter
     </Dropdown>
