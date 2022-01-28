@@ -95,7 +95,9 @@ interface DropdownProps {
   options?: SelectValue[]
   placeholder?: string
   position?: 'left'
-  sideHeading?: string
+  icon?: React.ReactNode | React.ReactNode[]
+  size?: 'M' | 'S'
+  closeMenuOnSelect?: boolean
 }
 
 interface EChartProps {
