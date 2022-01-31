@@ -109,8 +109,8 @@ interface EChartProps {
 interface FieldWrapperProps {
   children: React.ReactChild | React.ReactChild[]
   className?: string
-  helperText?: string
-  helperType?: string
+  helperText?: string | React.ReactElement
+  helperType?: 'text' | 'error'
   html?: boolean
   label?: string
 }
@@ -253,3 +253,8 @@ export declare const Spinner: (props: SpinnerProps) => React.ReactElement
 export declare const Table: (props: TableProps) => React.ReactElement
 export declare const Textarea: (props: TextareaProps) => React.ReactElement
 export declare const Toggle: (props: ToggleProps) => React.ReactElement
+
+export declare const useLoadingStatus: () => {
+  isLoading: boolean
+  showLoader: (isLoading: boolean) => void
+}
