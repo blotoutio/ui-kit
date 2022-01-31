@@ -7,19 +7,21 @@ import {
   blue50,
   blue60,
   neutrals10,
+  neutrals20,
   neutrals70,
   neutrals80,
   neutrals90,
   orange10,
   orange20,
+  orange50,
   orange60,
   orange70,
   orange80,
   white,
 } from '../common/colors'
 
-const getSolidColor = (type) => {
-  switch (type) {
+const getSolidColor = (color) => {
+  switch (color) {
     case 'primary': {
       return {
         bg: orange60,
@@ -47,8 +49,8 @@ const getSolidColor = (type) => {
   }
 }
 
-const getFlatColor = (type) => {
-  switch (type) {
+const getFlatColor = (color) => {
+  switch (color) {
     case 'primary': {
       return {
         bgHover: neutrals10,
@@ -76,8 +78,8 @@ const getFlatColor = (type) => {
   }
 }
 
-const getOutlineColor = (type) => {
-  switch (type) {
+const getOutlineColor = (color) => {
+  switch (color) {
     case 'primary': {
       return {
         bgHover: orange10,
@@ -101,6 +103,27 @@ const getOutlineColor = (type) => {
         text: neutrals70,
         textActive: white,
         border: `1px solid ${neutrals70}`,
+      }
+    }
+  }
+}
+
+const getLightColor = (color) => {
+  switch (color) {
+    case 'neutral': {
+      return {
+        bg: neutrals10,
+        bgHover: neutrals20,
+        bgActive: neutrals20,
+        text: neutrals70,
+      }
+    }
+    case 'primary': {
+      return {
+        bg: orange50,
+        bgHover: orange60,
+        bgActive: orange70,
+        text: white,
       }
     }
   }
@@ -138,11 +161,13 @@ const generateCSS = (props) => {
   let color
 
   if (props.variant === 'flat') {
-    color = getFlatColor(props.type)
+    color = getFlatColor(props.color)
   } else if (props.variant === 'outline') {
-    color = getOutlineColor(props.type)
+    color = getOutlineColor(props.color)
+  } else if (props.variant === 'light') {
+    color = getLightColor(props.color)
   } else {
-    color = getSolidColor(props.type)
+    color = getSolidColor(props.color)
   }
 
   let hover = css`

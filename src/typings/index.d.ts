@@ -38,8 +38,10 @@ interface ButtonInterface {
   isDisabled?: boolean
   size?: 'M' | 'S'
   to?: string
-  type?: 'primary' | 'secondary' | 'neutral'
-  variant?: 'solid' | 'flat' | 'outline'
+  color?: 'primary' | 'secondary' | 'neutral'
+  variant?: 'solid' | 'flat' | 'outline' | 'light'
+  type?: string
+  form?: string
 }
 
 interface DataTableInterface {

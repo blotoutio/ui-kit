@@ -26,7 +26,7 @@ const Table = (args) => {
           icon={row === 'Icon' && <Arrow rotate={90} />}
           isDisabled={row === 'Disabled'}
           variant={variant}
-          type={args.type}
+          color={args.color}
           size={args.size}
         />
       </td>
@@ -80,6 +80,7 @@ export const ControlButton = (args) => (
     <Button {...args} />
   </ButtonContainer>
 )
+
 ControlButton.argTypes = {
   type: {
     options: types,
@@ -94,9 +95,10 @@ ControlButton.argTypes = {
     control: 'select',
   },
   isDisabled: {
-    contorl: 'boolean',
+    control: 'boolean',
   },
 }
+
 ControlButton.args = {
   type: 'primary',
   variant: 'solid',

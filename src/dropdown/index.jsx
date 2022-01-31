@@ -78,8 +78,8 @@ const Menu = (props) => {
           {props.selectProps.handleAdd && (
             <ButtonWrapper>
               <Button
-                type={'secondary'}
-                className={'change-data'}
+                color='secondary'
+                className='change-data'
                 onClick={props.selectProps.handleAdd}
               >
                 Add
