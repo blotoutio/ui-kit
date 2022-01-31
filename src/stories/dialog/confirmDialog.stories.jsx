@@ -1,24 +1,33 @@
-import DialogBox from '../../dialog'
 import Button from '../../button'
 import { ButtonContainer } from '../common/sharedStyle'
 import { useState } from 'react'
-
-const variants = ['normal', 'form']
+import Dialog from '../../confirmDialog'
 
 export default {
   title: 'Dialog',
 }
 
-export const Dialog = (args) => {
+export const ConfirmDialog = (args) => {
   const [isDisplay, setIsDisplay] = useState(false)
 
   const changeDisplay = () => {
     setIsDisplay(!isDisplay)
   }
 
+  const handleDelete = () => {
+    changeDisplay()
+    alert('Yes')
+  }
+
   return (
     <>
-      {isDisplay && <DialogBox {...args} onClose={changeDisplay} />}
+      {isDisplay && (
+        <Dialog
+          {...args}
+          handleClose={changeDisplay}
+          handleDelete={handleDelete}
+        />
+      )}
       {!isDisplay && (
         <ButtonContainer>
           <Button
@@ -32,11 +41,7 @@ export const Dialog = (args) => {
   )
 }
 
-Dialog.argTypes = {
-  variant: {
-    options: variants,
-    control: 'select',
-  },
+ConfirmDialog.argTypes = {
   title: {
     control: 'text',
   },
@@ -45,10 +50,9 @@ Dialog.argTypes = {
   },
 }
 
-Dialog.component = 'Dialog'
+ConfirmDialog.component = 'ConfirmDialog'
 
-Dialog.args = {
-  title: 'Dialog',
-  variant: 'normal',
+ConfirmDialog.args = {
+  title: 'Dialog Box',
   children: 'My content',
 }
