@@ -21,7 +21,6 @@ const FieldWrapper = (props) => {
         {props.label && <LabelText>{props.label}</LabelText>}
         {props.children}
       </label>
-
       {props.helperText && getText()}
     </div>
   )
