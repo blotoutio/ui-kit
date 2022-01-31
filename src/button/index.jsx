@@ -2,7 +2,7 @@ import { Action, External, Icon, Internal, Wrapper } from './style'
 import { BrowserRouter } from 'react-router-dom'
 
 /*
-  Type:
+  Color:
   - primary (orange)
   - secondary (blue)
   - neutral (grey)
@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom'
   - solid
   - flat
   - outline
+  - light
 
   Size:
   - M
@@ -21,11 +22,13 @@ const Button = (props) => {
   let Component = Action
   const componentProps = {
     className: props.className,
-    type: props.type || 'primary',
+    color: props.color || 'primary',
     variant: props.variant || 'solid',
     size: props.size || 'M',
     disabled: props.isDisabled,
     'data-testid': props.id,
+    form: props.form,
+    type: props.type,
   }
 
   const iconPosition = props.iconPosition || 'right'

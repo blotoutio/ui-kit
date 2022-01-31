@@ -22,7 +22,7 @@ export const SnackBar = (args) => {
         <Button
           onClick={showSnackbar}
           children='show snack-bar'
-          type='neutral'
+          color='neutral'
         />
       </ButtonContainer>
       {snackbar && (
