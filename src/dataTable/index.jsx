@@ -56,12 +56,18 @@ const DataTable = ({
     setTotalData(rows)
     setSearchText('')
     setRowsPerPage(perPage)
-    if (rows.length > perPage.value) {
-      setShowFooter(true)
+    if (rows) {
+      if (rows.length > perPage.value) {
+        setShowFooter(true)
+      }
+      setEndRow(Math.min(rows.length, perPage.value))
+      setFilteredData(rows.slice(0, Math.min(rows.length, perPage.value)))
+      getPageNumbers(curPage, rows.length, perPage.value)
+    } else {
+      setShowFooter(false)
+      setEndRow(0)
+      setFilteredData([])
     }
-    setEndRow(Math.min(rows.length, perPage.value))
-    setFilteredData(rows.slice(0, Math.min(rows.length, perPage.value)))
-    getPageNumbers(curPage, rows.length, perPage.value)
   }, [rows])
 
   const extractText = (data) => {

@@ -3,7 +3,6 @@ import {
   blue40,
   errorJuice,
   neutrals10,
-  neutrals40,
   neutrals100,
   neutrals20,
   neutrals60,
@@ -25,24 +24,24 @@ const getSize = (size) => {
 }
 
 export const Wrapper = styled.div`
-  color: ${({ color }) => (color ? color : neutrals60)};
+  color: ${({ color }) => color || neutrals60};
   position: relative;
   background: ${white};
 
   input {
     background: none;
     border: 1px solid
-      ${({ error, color }) => (error ? errorJuice : color ? color : neutrals20)};
+      ${({ error, color }) => (error ? errorJuice : color || neutrals20)};
     width: 100%;
     padding: 4px ${({ hasIcon }) => (hasIcon ? '30px' : '12px')} 4px 12px;
     border-radius: 5px;
     transition: 0.1s;
     outline: none;
-    color: ${({ color }) => (color ? color : neutrals100)};
+    color: ${({ color }) => color || neutrals100};
     ${({ size }) => getSize(size)}
 
     ::placeholder {
-      color: ${({ color }) => (color ? color : neutrals100)};
+      color: ${({ color }) => color || neutrals100};
       opacity: 0.5;
     }
 

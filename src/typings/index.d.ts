@@ -4,7 +4,7 @@ import { EChartsType, EChartsOption } from 'echarts'
 interface SelectValue {
   label: string
   value: number | string
-  [key: string]: number | string
+  [key: string]: any
 }
 
 interface BarChartProps {
@@ -28,11 +28,11 @@ interface BoxProps {
 }
 
 interface ButtonProps {
-  onClick: () => void
-  children?: React.ReactChild | React.ReactChild[]
+  onClick?: () => void
+  children?: React.ReactNode | React.ReactNode[]
   className?: string
   href?: string
-  icon?: React.ReactChild | React.ReactChild[]
+  icon?: React.ReactNode | React.ReactNode[]
   iconPosition?: 'left' | 'right'
   id?: string
   isDisabled?: boolean
@@ -48,14 +48,14 @@ interface ConfirmDialogProps {
   title?: string
   handleClose: any
   handleDelete: any
-  children: React.ReactChild[]
+  children: React.ReactNode[]
 }
 
 interface DataTableProps {
-  rows: string[][] | React.ReactElement[][]
-  headers: string[] | React.ReactElement[]
+  rows?: string[][] | React.ReactNode[][]
+  headers: string[] | React.ReactNode[]
   className?: string
-  Component?: React.ReactChild | React.ReactChild[]
+  Component?: React.ReactNode | React.ReactNode[]
   downloadable?: boolean
   emptyCell?: string
   hasPagination?: boolean
@@ -67,7 +67,7 @@ interface DataTableProps {
 }
 
 interface DialogProps {
-  children: React.ReactChild | React.ReactChild[]
+  children: React.ReactNode | React.ReactNode[]
   title: string
   className?: string
   disabledOutline?: boolean
@@ -83,7 +83,7 @@ interface DropdownProps {
     value: string
     category: string
   }
-  children: React.ReactChild | React.ReactChild[]
+  children: React.ReactNode | React.ReactNode[]
   className?: string
   handleAdd?: () => void
   id?: string
@@ -107,9 +107,9 @@ interface EChartProps {
 }
 
 interface FieldWrapperProps {
-  children: React.ReactChild | React.ReactChild[]
+  children: React.ReactNode | React.ReactNode[]
   className?: string
-  helperText?: string | React.ReactElement
+  helperText?: string | React.ReactNode
   helperType?: 'text' | 'error'
   html?: boolean
   label?: string
@@ -118,8 +118,8 @@ interface FieldWrapperProps {
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   color?: string
-  error?: string
-  forwardRef?: React.ReactElement
+  error?: boolean
+  forwardRef?: React.ReactNode
   icon?: boolean
 }
 
@@ -159,7 +159,8 @@ interface MultiSelectInputProps {
 interface SimpleSelectProps {
   handleChange: (value: SelectValue) => void
   handleInputChange?: (value: string) => void
-  value: SelectValue
+  value?: SelectValue | null
+  options?: SelectValue[]
   handleKeyDown?: (value: SelectValue) => void
   isClearable?: boolean
   isMulti?: boolean
@@ -167,15 +168,14 @@ interface SimpleSelectProps {
   showError?: boolean
   styles?: Record<string, number | string>[]
   type?: 'form'
+  width?: number
+  margin?: number
 }
 
 interface SimpleAsyncSelectProps {
   handleChange: (value: SelectValue[]) => void
-  loadOptions: (arg0: string) => {
-    label: string
-    value: number
-  }
-  value: SelectValue
+  loadOptions: (arg0: string) => SelectValue
+  value?: SelectValue
   classNamePrefix?: string
   id?: string
   isClearable?: boolean
@@ -185,6 +185,8 @@ interface SimpleAsyncSelectProps {
   placeholder?: string
   showError?: boolean
   type?: 'form'
+  width?: number
+  margin?: number
 }
 
 interface SnackbarProps {
@@ -198,19 +200,19 @@ interface SpinnerProps {
 }
 
 interface TableProps {
-  rows: string[][] | React.ReactElement[][]
+  rows: string[][] | React.ReactNode[][]
   className?: string
   format?: (
     row: number,
     column: number,
-    cellvalues: string | React.ReactElement
+    cellvalues: string | React.ReactNode
   ) => string
-  headers?: string[] | React.ReactElement[]
+  headers?: string[] | React.ReactNode[]
   noData?: string[]
 }
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  forwardRef: React.ReactElement
+  forwardRef: React.ReactNode
   className?: string
   error?: boolean
 }
