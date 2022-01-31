@@ -1,5 +1,4 @@
 import { Action, External, Icon, Internal, Wrapper } from './style'
-import { BrowserRouter } from 'react-router-dom'
 
 /*
   Color:
@@ -65,15 +64,13 @@ const Button = (props) => {
   }
 
   return (
-    <BrowserRouter>
-      <Component {...componentProps}>
-        <Wrapper size={componentProps.size}>
-          {getIcon('left')}
-          <span>{props.children}</span>
-          {getIcon('right')}
-        </Wrapper>
-      </Component>
-    </BrowserRouter>
+    <Component {...componentProps}>
+      <Wrapper size={componentProps.size}>
+        {getIcon('left')}
+        <span>{props.children}</span>
+        {getIcon('right')}
+      </Wrapper>
+    </Component>
   )
 }
 

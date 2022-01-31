@@ -31,12 +31,12 @@
   "dependencies": {
     "echarts": "^5.0.2",
     "jspdf-autotable": "^3.5.23",
-    "react-router-dom": "^5.2.0",
     "react-select": "^4.2.1"
   },
   "peerDependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",

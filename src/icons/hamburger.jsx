@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.span`
+  display: flex;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
 `

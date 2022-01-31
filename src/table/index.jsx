@@ -6,7 +6,7 @@ const Table = ({ headers, rows, className, format, noData }) => {
   }
 
   return (
-    <StyledTable className={className}>
+    <StyledTable className={className} topBorder={!headers || !headers.length}>
       {headers && headers.length > 0 && (
         <StyledHeader>
           <tr>

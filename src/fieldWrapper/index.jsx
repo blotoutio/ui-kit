@@ -1,7 +1,11 @@
-import { HelperText, LabelText } from './style'
+import { HelperText, LabelText, Wrapper } from './style'
 
 const FieldWrapper = (props) => {
   const getText = () => {
+    if (!props.helperText) {
+      return
+    }
+
     if (props.html) {
       return (
         <HelperText
@@ -16,13 +20,13 @@ const FieldWrapper = (props) => {
     )
   }
   return (
-    <div className={props.className}>
+    <Wrapper className={props.className}>
       <label>
         {props.label && <LabelText>{props.label}</LabelText>}
         {props.children}
       </label>
       {props.helperText && getText()}
-    </div>
+    </Wrapper>
   )
 }
 

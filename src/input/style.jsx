@@ -3,9 +3,9 @@ import {
   blue40,
   errorJuice,
   neutrals10,
-  neutrals100,
   neutrals20,
   neutrals60,
+  neutrals80,
   white,
 } from '../common/colors'
 
@@ -24,24 +24,21 @@ const getSize = (size) => {
 }
 
 export const Wrapper = styled.div`
-  color: ${({ color }) => color || neutrals60};
+  color: ${neutrals60};
   position: relative;
-  background: ${white};
 
   input {
-    background: none;
-    border: 1px solid
-      ${({ error, color }) => (error ? errorJuice : color || neutrals20)};
+    background: ${white};
+    border: 1px solid ${({ error }) => (error ? errorJuice : neutrals20)};
     width: 100%;
-    padding: 4px ${({ hasIcon }) => (hasIcon ? '30px' : '12px')} 4px 12px;
+    padding: 10px ${({ hasIcon }) => (hasIcon ? '30px' : '16px')} 10px 16px;
     border-radius: 5px;
     transition: 0.1s;
     outline: none;
-    color: ${({ color }) => color || neutrals100};
+    color: ${neutrals80};
     ${({ size }) => getSize(size)}
 
-    ::placeholder {
-      color: ${({ color }) => color || neutrals100};
+    &::placeholder {
       opacity: 0.5;
     }
 

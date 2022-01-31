@@ -15,13 +15,13 @@ const ConfirmDialog = ({ title, handleClose, handleDelete, children }) => {
             </IconWrapper>
           }
         >
-          {children}
           <ButtonContainer>
             <Button onClick={handleDelete}>Delete</Button>
             <Button color='neutral' onClick={handleClose}>
               Cancel
             </Button>
           </ButtonContainer>
+          {children}
         </Box>
       </Content>
     </Wrapper>

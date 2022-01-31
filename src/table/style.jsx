@@ -7,6 +7,8 @@ export const StyledTable = styled.table`
   border-collapse: collapse;
   font-size: 16px;
   line-height: 24px;
+  border-top: ${({ topBorder }) =>
+    topBorder ? `1px solid ${neutrals20}` : 'none'};
 
   b {
     font-variation-settings: 'wght' 500;

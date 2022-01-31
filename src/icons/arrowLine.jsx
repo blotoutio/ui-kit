@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.span`
+  display: flex;
   transform: rotate(${({ rotate }) => rotate}deg);
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;

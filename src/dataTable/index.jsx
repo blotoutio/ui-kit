@@ -303,7 +303,9 @@ const DataTable = ({
                 <thead>
                   <StyledHeader>
                     {headers.map((header, i) => (
-                      <StyledTh key={`th-${header}-${i}`}>{header}</StyledTh>
+                      <StyledTh className={`th-${i}`} key={`th-${header}-${i}`}>
+                        {header}
+                      </StyledTh>
                     ))}
                   </StyledHeader>
                 </thead>
@@ -320,9 +322,16 @@ const DataTable = ({
                 ) : (
                   <>
                     {filteredData.map((row, i) => (
-                      <StyledTr key={`tr-${i}`} hasColor={i % 2 === 1}>
+                      <StyledTr
+                        className={`tr-${i}`}
+                        key={`tr-${i}`}
+                        hasColor={i % 2 === 1}
+                      >
                         {row.map((cell, j) => (
-                          <StyledTd key={`td-${i}-${j}-${cell}`}>
+                          <StyledTd
+                            className={`td-${j}`}
+                            key={`td-${i}-${j}-${cell}`}
+                          >
                             {cell || emptyCell || '0'}
                           </StyledTd>
                         ))}

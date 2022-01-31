@@ -8,7 +8,6 @@ const Input = (props) => {
   delete inputProps.error
   delete inputProps.size
   delete inputProps.className
-  delete inputProps.color
 
   return (
     <Wrapper
@@ -16,7 +15,6 @@ const Input = (props) => {
       error={props.error}
       hasIcon={props.icon}
       size={props.size || 'M'}
-      color={props.color}
     >
       <input {...inputProps} ref={props.forwardRef} />
       {props.icon && props.icon}
