@@ -68,3 +68,18 @@ export declare const Keyword: (props: IconInterface) => React.ReactElement
 export declare const ConversionEvent: (
   props: IconInterface
 ) => React.ReactElement
+export declare const Copy: (props: IconInterface) => React.ReactElement
+export declare const Add: (props: IconInterface) => React.ReactElement
+export declare const Wallet: (props: IconInterface) => React.ReactElement
+export declare const Bill: (props: IconInterface) => React.ReactElement
+export declare const Edit: (props: IconInterface) => React.ReactElement
+export declare const Hamburger: (props: IconInterface) => React.ReactElement
+export declare const House: (props: IconInterface) => React.ReactElement
+export declare const Host: (props: IconInterface) => React.ReactElement
+export declare const Lock: (props: IconInterface) => React.ReactElement
+export declare const MasterCard: (props: IconInterface) => React.ReactElement
+export declare const QuestionMark: (props: IconInterface) => React.ReactElement
+export declare const Shield: (props: IconInterface) => React.ReactElement
+export declare const Upgrade: (props: IconInterface) => React.ReactElement
+export declare const VisaCard: (props: IconInterface) => React.ReactElement
+export declare const World: (props: IconInterface) => React.ReactElement
