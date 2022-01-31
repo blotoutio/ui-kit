@@ -7,7 +7,7 @@ interface SelectValue {
   [key: string]: number | string
 }
 
-interface BarChartInterface {
+interface BarChartProps {
   data: {
     categories: string[]
     data: string[][]
@@ -21,13 +21,13 @@ interface BarChartInterface {
   vertical?: boolean
 }
 
-interface BoxInterface {
+interface BoxProps {
   className?: string
   loading?: boolean
   type?: 'slim' | 'fit'
 }
 
-interface ButtonInterface {
+interface ButtonProps {
   onClick: () => void
   children?: React.ReactChild | React.ReactChild[]
   className?: string
@@ -44,7 +44,14 @@ interface ButtonInterface {
   form?: string
 }
 
-interface DataTableInterface {
+interface ConfirmDialogProps {
+  title?: string
+  handleClose: any
+  handleDelete: any
+  children: React.ReactChild[]
+}
+
+interface DataTableProps {
   rows: string[][] | React.ReactElement[][]
   headers: string[] | React.ReactElement[]
   className?: string
@@ -59,7 +66,7 @@ interface DataTableInterface {
   type?: 'table'
 }
 
-interface DialogInterface {
+interface DialogProps {
   children: React.ReactChild | React.ReactChild[]
   title: string
   className?: string
@@ -68,7 +75,7 @@ interface DialogInterface {
   variant?: 'normal' | 'form'
 }
 
-interface DropdownInterface {
+interface DropdownProps {
   handleChange: (value: SelectValue) => void
   value: SelectValue
   category?: {
@@ -91,7 +98,7 @@ interface DropdownInterface {
   sideHeading?: string
 }
 
-interface EChartInterface {
+interface EChartProps {
   options: EChartsOption
   config?: {
     notMerge: boolean
@@ -99,7 +106,7 @@ interface EChartInterface {
   id?: string
 }
 
-interface FieldWrapperInterface {
+interface FieldWrapperProps {
   children: React.ReactChild | React.ReactChild[]
   className?: string
   helperText?: string
@@ -108,7 +115,7 @@ interface FieldWrapperInterface {
   label?: string
 }
 
-interface InputInterface extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
   color?: string
   error?: string
@@ -116,7 +123,7 @@ interface InputInterface extends InputHTMLAttributes<HTMLInputElement> {
   icon?: boolean
 }
 
-interface LineChartInterface {
+interface LineChartProps {
   data: {
     bars: string[]
     categories: string[]
@@ -130,12 +137,12 @@ interface LineChartInterface {
   id?: string
 }
 
-interface LoaderInterface {
+interface LoaderProps {
   className?: string
   variation?: 'global' | 'local'
 }
 
-interface MultiSelectInputInterface {
+interface MultiSelectInputProps {
   handleChange: (value: SelectValue, type: string) => void
   handleInputChange: (value: string) => void
   handleKeyDown: (value: SelectValue) => void
@@ -149,7 +156,7 @@ interface MultiSelectInputInterface {
   placeholder?: string
 }
 
-interface SimpleSelectInterface {
+interface SimpleSelectProps {
   handleChange: (value: SelectValue) => void
   handleInputChange?: (value: string) => void
   value: SelectValue
@@ -162,7 +169,7 @@ interface SimpleSelectInterface {
   type?: 'form'
 }
 
-interface SimpleAsyncSelectInterface {
+interface SimpleAsyncSelectProps {
   handleChange: (value: SelectValue[]) => void
   loadOptions: (arg0: string) => {
     label: string
@@ -180,17 +187,17 @@ interface SimpleAsyncSelectInterface {
   type?: 'form'
 }
 
-interface SnackbarInterface {
+interface SnackbarProps {
   message: string
   onClose: () => void
   variant?: 'success' | 'error'
 }
 
-interface SpinnerInterface {
+interface SpinnerProps {
   type?: 'button-white' | 'small'
 }
 
-interface TableInterface {
+interface TableProps {
   rows: string[][] | React.ReactElement[][]
   className?: string
   format?: (
@@ -202,14 +209,13 @@ interface TableInterface {
   noData?: string[]
 }
 
-interface TextareaInterface
-  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   forwardRef: React.ReactElement
   className?: string
   error?: boolean
 }
 
-interface ToggleInterface {
+interface ToggleProps {
   handleChange: (value: SelectValue) => void
   options: SelectValue[]
   selected: SelectValue
@@ -217,34 +223,33 @@ interface ToggleInterface {
   isDisable?: boolean
 }
 
-export declare const BarChart: (props: BarChartInterface) => React.ReactElement
-export declare const Box: (props: BoxInterface) => React.ReactElement
-export declare const Button: (props: ButtonInterface) => React.ReactElement
-export declare const DataTable: (
-  props: DataTableInterface
+export declare const BarChart: (props: BarChartProps) => React.ReactElement
+export declare const Box: (props: BoxProps) => React.ReactElement
+export declare const Button: (props: ButtonProps) => React.ReactElement
+export declare const ConfirmDialog: (
+  props: ConfirmDialogProps
 ) => React.ReactElement
-export declare const Dialog: (props: DialogInterface) => React.ReactElement
-export declare const Dropdown: (props: DropdownInterface) => React.ReactElement
-export declare const EChart: (props: EChartInterface) => React.ReactElement
+export declare const DataTable: (props: DataTableProps) => React.ReactElement
+export declare const Dialog: (props: DialogProps) => React.ReactElement
+export declare const Dropdown: (props: DropdownProps) => React.ReactElement
+export declare const EChart: (props: EChartProps) => React.ReactElement
 export declare const FieldWrapper: (
-  props: FieldWrapperInterface
+  props: FieldWrapperProps
 ) => React.ReactElement
-export declare const Input: (props: InputInterface) => React.ReactElement
-export declare const LineChart: (
-  props: LineChartInterface
-) => React.ReactElement
-export declare const Loader: (props: LoaderInterface) => React.ReactElement
+export declare const Input: (props: InputProps) => React.ReactElement
+export declare const LineChart: (props: LineChartProps) => React.ReactElement
+export declare const Loader: (props: LoaderProps) => React.ReactElement
 export declare const MultiSelectInput: (
-  props: MultiSelectInputInterface
+  props: MultiSelectInputProps
 ) => React.ReactElement
 export declare const SimpleAsyncSelect: (
-  props: SimpleAsyncSelectInterface
+  props: SimpleAsyncSelectProps
 ) => React.ReactElement
 export declare const SimpleSelect: (
-  props: SimpleSelectInterface
+  props: SimpleSelectProps
 ) => React.ReactElement
-export declare const Snackbar: (props: SnackbarInterface) => React.ReactElement
-export declare const Spinner: (props: SpinnerInterface) => React.ReactElement
-export declare const Table: (props: TableInterface) => React.ReactElement
-export declare const Textarea: (props: TextareaInterface) => React.ReactElement
-export declare const Toggle: (props: ToggleInterface) => React.ReactElement
+export declare const Snackbar: (props: SnackbarProps) => React.ReactElement
+export declare const Spinner: (props: SpinnerProps) => React.ReactElement
+export declare const Table: (props: TableProps) => React.ReactElement
+export declare const Textarea: (props: TextareaProps) => React.ReactElement
+export declare const Toggle: (props: ToggleProps) => React.ReactElement
