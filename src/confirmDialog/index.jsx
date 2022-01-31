@@ -1,4 +1,4 @@
-import { Close } from '../../icons'
+import { Close } from '../icons'
 import Box from '../box'
 import Button from '../button'
 import { Content, Wrapper, IconWrapper, ButtonContainer } from './style'

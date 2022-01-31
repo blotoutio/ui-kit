@@ -5,3 +5,4 @@ storybook-static
 esm
 cjs
 /*.d.ts
+.storybook/dist
