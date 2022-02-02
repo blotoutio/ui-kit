@@ -24,7 +24,8 @@
     "package.json",
     "README.md",
     "index.d.ts",
-    "icons.d.ts"
+    "icons.d.ts",
+    "colors.d.ts"
   ],
   "types": "index.d.ts",
   "main": "index.js",

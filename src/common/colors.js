@@ -62,3 +62,21 @@ export const blue70 = '#0B3B94'
 export const blue80 = '#003173'
 export const blue90 = '#001E47'
 export const blue100 = '#001531'
+
+export const chartColors = [
+  '#2B65CF',
+  '#F25C2B',
+  '#FFCC81',
+  '#594157',
+  '#136F63',
+  '#DB162F',
+  '#32CBFF',
+  '#5ACD66',
+  '#FF9B42',
+  '#B5BAD0',
+  '#AA7DCE',
+  '#F1F4F8',
+  '#F8F32B',
+  '#82AC9F',
+  '#730071',
+]
