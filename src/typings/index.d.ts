@@ -25,6 +25,10 @@ interface BoxProps {
   className?: string
   loading?: boolean
   type?: 'slim' | 'fit'
+  title?: string | React.ReactNode
+  subtitle?: string | React.ReactNode
+  action?: string | React.ReactNode
+  isDisabled?: boolean
 }
 
 interface ButtonProps {
