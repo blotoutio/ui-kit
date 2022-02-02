@@ -49,6 +49,7 @@ export const neutrals70 = '#4E647F'
 export const neutrals80 = '#394D66'
 export const neutrals90 = '#293B51'
 export const neutrals100 = '#172A41'
+export const neutralsDark = '#0E1E41'
 
 export const blue5 = '#E6ECF9'
 export const blue10 = '#C0D6FF'

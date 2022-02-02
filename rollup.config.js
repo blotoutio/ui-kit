@@ -54,5 +54,13 @@ module.exports = (commandLineArgs) => {
       ],
       ...config,
     },
+    {
+      input: './src/common/colors.js',
+      output: [
+        { file: `cjs/colors.js`, format: 'cjs', sourcemap: true },
+        { file: `esm/colors.js`, format: 'es', sourcemap: true },
+      ],
+      ...config,
+    },
   ]
 }
