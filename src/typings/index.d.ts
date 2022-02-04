@@ -29,6 +29,7 @@ interface BoxProps {
   subtitle?: string | React.ReactNode
   action?: string | React.ReactNode
   isDisabled?: boolean
+  children?: React.ReactNode | React.ReactNode[]
 }
 
 interface ButtonProps {
