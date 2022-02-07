@@ -2,9 +2,12 @@ import { Actions, Content, Header, Heading, Subtitle, Wrapper } from './style'
 import Loader from '../loader'
 
 const Box = (props) => {
-  const getHeader = (title, action, subtitle) => {
+  const getHeader = ({ title, action, subtitle }) => {
     if (!title && !action) {
-      return null
+      return {
+        hasHeader: false,
+        header: null,
+      }
     }
 
     let component = null
@@ -17,22 +20,27 @@ const Box = (props) => {
       )
     }
 
-    return (
-      <Header>
-        {component}
-        <Actions>{action}</Actions>
-      </Header>
-    )
+    return {
+      hasHeader: true,
+      header: (
+        <Header hasTitle={!!title}>
+          {component}
+          <Actions>{action}</Actions>
+        </Header>
+      ),
+    }
   }
+
+  const { hasHeader, header } = getHeader(props)
 
   return (
     <Wrapper
       className={props.className}
-      isHeading={!!props.title}
+      isHeading={hasHeader}
       isDisabled={props.isDisabled}
     >
-      {getHeader(props.title, props.action, props.subtitle)}
-      <Content type={props.type}>
+      {header}
+      <Content isHeading={hasHeader}>
         {props.loading && <Loader />}
         {props.children}
       </Content>

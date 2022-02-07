@@ -9,6 +9,10 @@ const Input = (props) => {
   delete inputProps.size
   delete inputProps.className
 
+  if (inputProps.value == null) {
+    inputProps.value = ''
+  }
+
   return (
     <Wrapper
       className={props.className}

@@ -1,15 +1,23 @@
 import Box from '../../box'
-
-const types = ['slim', 'fit']
+import Button from '../../button'
 
 export default {
   title: 'Box',
 }
 
 export const box = (args) => {
-  delete args.icon
+  let action = null
+  if (args.showAction) {
+    action = <Button>Add</Button>
+  }
+
   return (
-    <Box type={args.type}>
+    <Box
+      title={args.title}
+      subtitle={args.subtitle}
+      loading={args.loading}
+      action={action}
+    >
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -24,7 +32,10 @@ export const box = (args) => {
 }
 
 box.args = {
-  type: 'slim',
+  title: 'Hi',
+  subtitle: 'sub title',
+  loading: false,
+  showAction: false,
 }
 
 box.parameters = {
@@ -32,13 +43,6 @@ box.parameters = {
     default: 'light',
   },
   layout: 'centered',
-}
-
-box.argTypes = {
-  type: {
-    options: types,
-    control: 'select',
-  },
 }
 
 box.component = Box
