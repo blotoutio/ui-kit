@@ -13,24 +13,6 @@ const getHeaderPadding = (isHeading) => {
   `
 }
 
-const getContentPadding = (type) => {
-  if (type === 'slim') {
-    return css`
-      padding: 15px;
-    `
-  }
-
-  if (type === 'fit') {
-    return css`
-      padding: 0;
-    `
-  }
-
-  return css`
-    padding: 36px;
-  `
-}
-
 export const Wrapper = styled.div`
   box-shadow: 0 3px 20px ${black8};
   width: 100%;
@@ -45,13 +27,11 @@ export const Wrapper = styled.div`
   ${({ isHeading }) => getHeaderPadding(isHeading)}
 
   @media (max-width: 450px) {
-    padding: 23px 16px;
+    padding: 24px 16px;
   }
 `
 
 export const Content = styled.div`
-  ${({ type }) => getContentPadding(type)}
-  border-radius: 10px;
   position: relative;
 `
 
@@ -68,9 +48,9 @@ export const Heading = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 36px;
+  justify-content: ${({ hasTitle }) => (hasTitle ? 'space-between' : 'end')};
+  align-items: baseline;
+  margin-bottom: 26px;
 
   button {
     flex: 0;
