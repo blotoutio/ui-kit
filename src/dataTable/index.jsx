@@ -332,7 +332,7 @@ const DataTable = ({
                             className={`td-${j}`}
                             key={`td-${i}-${j}-${cell}`}
                           >
-                            {cell || emptyCell || '0'}
+                            {cell || emptyCell || ''}
                           </StyledTd>
                         ))}
                       </StyledTr>
