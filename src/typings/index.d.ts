@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react'
-import { EChartsType, EChartsOption } from 'echarts'
+import { EChartsOption } from 'echarts'
 
-interface SelectValue {
+export interface SelectValue {
   label: string
   value: number | string
   [key: string]: any
@@ -226,10 +226,10 @@ interface TableProps {
   rows: string[][] | React.ReactNode[][]
   className?: string
   format?: (
-    row: number,
-    column: number,
-    cellvalues: string | React.ReactNode
-  ) => string
+    rowNumber: number,
+    columnNumber: number,
+    cell: string | React.ReactNode
+  ) => React.ReactNode
   headers?: string[] | React.ReactNode[]
   noData?: string[]
 }
