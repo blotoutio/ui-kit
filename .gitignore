@@ -4,5 +4,5 @@ storybook-static
 .idea
 esm
 cjs
-/*.d.ts
+index.d.ts
 .storybook/dist
