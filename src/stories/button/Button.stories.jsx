@@ -3,8 +3,8 @@ import { TableContainer } from './style'
 import { Arrow } from '../../icons'
 import { ButtonContainer } from '../common/sharedStyle'
 
-const variants = ['solid', 'flat', 'outline']
-const types = ['primary', 'secondary', 'neutral']
+const variants = ['solid', 'flat', 'outline', 'light']
+const colors = ['primary', 'secondary', 'neutral']
 const sizes = ['M', 'S']
 const rows = ['Normal', 'Icon', 'Disabled']
 
@@ -42,7 +42,7 @@ const Table = (args) => {
   return (
     <div>
       <h1>
-        {captalize(args.type)} Buttons {args.size}
+        {captalize(args.color)} Buttons {args.size}
       </h1>
       <table>
         <thead>
@@ -65,8 +65,8 @@ export const AllButton = (args) => {
       <Table key={`${size}-${index}`} {...props} size={size} />
     ))
 
-  const TableTypes = types.map((type, index) => (
-    <TableSizes key={`${type}-${index}`} type={type} {...args} />
+  const TableTypes = colors.map((color, index) => (
+    <TableSizes key={`${color}-${index}`} color={color} {...args} />
   ))
 
   return <TableContainer>{TableTypes}</TableContainer>
@@ -82,8 +82,8 @@ export const ControlButton = (args) => (
 )
 
 ControlButton.argTypes = {
-  type: {
-    options: types,
+  color: {
+    options: colors,
     control: 'select',
   },
   variant: {
@@ -100,7 +100,7 @@ ControlButton.argTypes = {
 }
 
 ControlButton.args = {
-  type: 'primary',
+  color: 'primary',
   variant: 'solid',
   size: 'M',
   isDisabled: false,
