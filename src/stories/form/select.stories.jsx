@@ -71,7 +71,7 @@ Select.argTypes = {
     },
   },
   type: {
-    options: ['default', 'form'],
+    options: ['default', 'form', 'medium'],
     control: 'select',
   },
 }

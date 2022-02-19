@@ -10,6 +10,14 @@ import { errorJuice, neutrals10, neutrals80 } from '../common/colors'
 const regularStyle = (hasError) => ({
   control: (provided) => ({
     ...provided,
+    minHeight: '46px',
+    borderColor: hasError ? `${errorJuice} !important` : '#ccc',
+  }),
+})
+
+const mediumStyle = (hasError) => ({
+  control: (provided) => ({
+    ...provided,
     minHeight: '34px',
     borderColor: hasError ? `${errorJuice} !important` : '#ccc',
   }),
@@ -51,6 +59,11 @@ export const SimpleSelect = (props) => {
   if (props.type === 'form') {
     more.styles = formStyle(props.showError)
     more.classNamePrefix = 'form'
+  }
+
+  if (props.type === 'medium') {
+    more.styles = mediumStyle(props.showError)
+    more.classNamePrefix = 'medium'
   }
 
   if (props.styles) {
@@ -111,6 +124,11 @@ export const SimpleAsyncSelect = (props) => {
   if (props.type === 'form') {
     more.styles = formStyle(props.showError)
     more.classNamePrefix = 'form'
+  }
+
+  if (props.type === 'medium') {
+    more.styles = mediumStyle(props.showError)
+    more.classNamePrefix = 'medium'
   }
 
   if (props.styles) {
