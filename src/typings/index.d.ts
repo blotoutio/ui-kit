@@ -190,7 +190,7 @@ interface SimpleSelectProps {
   placeholder?: string
   showError?: boolean
   styles?: Record<string, number | string>[]
-  type?: 'form'
+  type?: 'form' | 'default' | 'medium'
   width?: number
   margin?: number
 }
@@ -207,7 +207,7 @@ interface SimpleAsyncSelectProps {
   noOptionsMessage?: (arg0: string) => string
   placeholder?: string
   showError?: boolean
-  type?: 'form'
+  type?: 'form' | 'default' | 'medium'
   width?: number
   margin?: number
 }
