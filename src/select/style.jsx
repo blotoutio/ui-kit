@@ -12,7 +12,7 @@ import {
 } from '../common/colors'
 
 export const Wrapper = styled.div`
-  width: ${({ width }) => width || 250}px;
+  width: ${({ width }) => (width ? `${width}px` : `100%`)};
   margin: 0 ${({ margin }) => (margin != null ? margin : 10)}px;
   font-size: 14px;
   line-height: 20px;
