@@ -14,6 +14,8 @@ const getSize = (size) => {
     return css`
       font-size: 14px;
       line-height: 20px;
+      padding-top: 6px;
+      padding-bottom: 6px;
     `
   }
 
@@ -29,9 +31,9 @@ export const Wrapper = styled.div`
 
   input {
     background: ${white};
-    border: 1px solid ${({ error }) => (error ? errorJuice : neutrals20)};
     width: 100%;
     padding: 10px ${({ hasIcon }) => (hasIcon ? '30px' : '16px')} 10px 16px;
+    border: 1px solid ${({ error }) => (error ? errorJuice : neutrals20)};
     border-radius: 5px;
     transition: 0.1s;
     outline: none;
@@ -55,7 +57,9 @@ export const Wrapper = styled.div`
 
   svg {
     position: absolute;
-    top: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
     right: 12px;
   }
 `
