@@ -33,6 +33,10 @@ const formStyle = css`
     color: ${neutrals80};
   }
 
+  .form__indicator {
+    padding: 0 8px;
+  }
+
   .form__indicator-separator {
     background-color: ${neutrals30};
   }
@@ -69,9 +73,23 @@ const regularStyle = css`
   }
 `
 
+const mediumStyle = css`
+  .medium__dropdown-indicator {
+    padding: 6px 8px;
+  }
+
+  .medium__indicator {
+    padding: 5px 8px;
+  }
+`
+
 const getStyle = (type) => {
   if (type === 'form') {
     return formStyle
+  }
+
+  if (type === 'medium') {
+    return mediumStyle
   }
 
   return regularStyle
