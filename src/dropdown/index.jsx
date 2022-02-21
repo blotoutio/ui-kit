@@ -81,7 +81,7 @@ const Menu = (props) => {
                 className='change-data'
                 onClick={props.selectProps.handleAdd}
               >
-                Add
+                Add / Edit
               </Button>
             </ButtonWrapper>
           )}
@@ -229,7 +229,7 @@ const Dropdown = (props) => {
       Object.keys(props.value).map((category) => {
         count += props.value[category].data.length
       })
-      hasData = count ? true : false
+      hasData = !!count
     } else {
       hasData = props.value && Object.keys(props.value).length ? true : false
     }
