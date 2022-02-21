@@ -144,7 +144,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   color?: string
   error?: boolean
   forwardRef?: React.ReactNode
-  icon?: boolean
+  icon?: React.ReactNode
 }
 
 interface LineChartProps {
