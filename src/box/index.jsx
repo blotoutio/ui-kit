@@ -38,6 +38,7 @@ const Box = (props) => {
       className={props.className}
       isHeading={hasHeader}
       isDisabled={props.isDisabled}
+      variation={props.variation}
     >
       {header}
       <Content isHeading={hasHeader}>

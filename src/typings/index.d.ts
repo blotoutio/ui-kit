@@ -29,6 +29,7 @@ interface BoxProps {
   action?: string | React.ReactNode
   isDisabled?: boolean
   children?: React.ReactNode | React.ReactNode[]
+  variation?: 'fit'
 }
 
 interface ButtonProps {

@@ -1,7 +1,13 @@
 import styled, { css } from 'styled-components'
 import { black8, neutrals100, white } from '../common/colors'
 
-const getHeaderPadding = (isHeading) => {
+const getHeaderPadding = (isHeading, variation) => {
+  if (variation === 'fit') {
+    return css`
+      padding: 0;
+    `
+  }
+
   if (!isHeading) {
     return css`
       padding: 23px 36px;
@@ -24,7 +30,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${({ isHeading }) => getHeaderPadding(isHeading)}
+  ${({ isHeading, variation }) => getHeaderPadding(isHeading, variation)}
 
   @media (max-width: 450px) {
     padding: 24px 16px;

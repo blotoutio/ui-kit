@@ -17,6 +17,7 @@ export const box = (args) => {
       subtitle={args.subtitle}
       loading={args.loading}
       action={action}
+      variation={args.variation}
     >
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -36,6 +37,14 @@ box.args = {
   subtitle: 'sub title',
   loading: false,
   showAction: false,
+  variation: 'none',
+}
+
+box.argTypes = {
+  variation: {
+    options: ['none', 'fit'],
+    control: 'select',
+  },
 }
 
 box.parameters = {
