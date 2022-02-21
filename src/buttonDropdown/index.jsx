@@ -8,7 +8,7 @@ import {
   Icon,
   ButtonWrapper,
 } from './style'
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useEffect, useRef } from 'react'
 import Select, { components } from 'react-select'
 import { neutrals80 } from '../common/colors'
 import Button from '../button'
@@ -106,8 +106,10 @@ const Option = (props) => {
 
 const ButtonDropdown = (props) => {
   const [show, setShow] = useState(false)
+  const [pos, setPos] = useState(props.position)
 
   const showDropDown = () => {
+    ref.current = ref.current + 1
     if (props.isDisabled) {
       return
     }
@@ -124,6 +126,8 @@ const ButtonDropdown = (props) => {
     hideDropDown()
   }
 
+  const ref = useRef()
+
   const selectComponent = () => {
     const Component = Select
     const componentProps = {
@@ -139,7 +143,7 @@ const ButtonDropdown = (props) => {
     }
 
     return (
-      <SelectWrapper position={props.position}>
+      <SelectWrapper ref={ref} position={pos}>
         <Component
           components={{
             DropdownIndicator,
@@ -165,6 +169,21 @@ const ButtonDropdown = (props) => {
       </SelectWrapper>
     )
   }
+
+  useEffect(() => {
+    if (!ref.current) {
+      return
+    }
+
+    const domRect = ref.current.getBoundingClientRect()
+    if (domRect.x < 0) {
+      setPos('left')
+    }
+
+    if (domRect.x + domRect.width > document.documentElement.clientWidth) {
+      setPos('right')
+    }
+  }, [ref.current])
 
   return (
     <Wrapper className={props.className}>
