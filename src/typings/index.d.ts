@@ -187,6 +187,7 @@ interface SimpleSelectProps {
   options?: SelectValue[]
   handleKeyDown?: (value: SelectValue) => void
   isClearable?: boolean
+  isDisabled?: boolean
   isMulti?: boolean
   placeholder?: string
   showError?: boolean
