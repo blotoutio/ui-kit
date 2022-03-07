@@ -17,7 +17,7 @@ import {
   FooterSection,
   LoaderContainer,
 } from './style'
-import 'jspdf-autotable'
+import autoTable from 'jspdf-autotable'
 import jsPDF from 'jspdf'
 import Input from '../input'
 import { Download, Search } from '../icons'
@@ -101,7 +101,7 @@ const DataTable = ({
     const doc = new jsPDF({
       orientation: 'landscape',
     })
-    doc.autoTable({
+    autoTable(doc, {
       head: [headers],
       body: tableData,
       theme: 'plain',
