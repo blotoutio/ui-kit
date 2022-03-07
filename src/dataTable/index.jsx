@@ -16,6 +16,7 @@ import {
   HeaderSection,
   FooterSection,
   LoaderContainer,
+  Wrapper,
 } from './style'
 import autoTable from 'jspdf-autotable'
 import jsPDF from 'jspdf'
@@ -289,7 +290,7 @@ const DataTable = ({
   }
 
   return (
-    <div>
+    <Wrapper>
       {getHeaderSection()}
       {loader ? (
         <LoaderContainer>
@@ -345,7 +346,7 @@ const DataTable = ({
           {showFooter && getFooterSection()}
         </>
       )}
-    </div>
+    </Wrapper>
   )
 }
 
