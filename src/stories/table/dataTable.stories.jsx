@@ -5,7 +5,15 @@ export default {
 }
 
 export const DataTable = (args) => {
-  return <Table headers={args.headers} rows={args.rows} noData={args.noData} />
+  return (
+    <Table
+      headers={args.headers}
+      rows={args.rows}
+      noData={args.noData}
+      searchable={args.showSearch}
+      downloadable={args.showDownload}
+    />
+  )
 }
 
 DataTable.args = {
@@ -16,6 +24,15 @@ DataTable.args = {
     ['visibility_hidden', '3', '4'],
     ['hover', '5', '6'],
   ],
+  showSearch: true,
+  showDownload: true,
 }
 
 DataTable.component = 'DataTable'
+
+DataTable.parameters = {
+  backgrounds: {
+    default: 'light',
+  },
+  layout: 'centered',
+}

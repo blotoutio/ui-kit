@@ -289,7 +289,7 @@ const DataTable = ({
   }
 
   return (
-    <>
+    <div>
       {getHeaderSection()}
       {loader ? (
         <LoaderContainer>
@@ -345,7 +345,7 @@ const DataTable = ({
           {showFooter && getFooterSection()}
         </>
       )}
-    </>
+    </div>
   )
 }
 
