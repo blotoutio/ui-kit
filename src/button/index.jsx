@@ -54,6 +54,13 @@ const Button = (props) => {
 
   if (props.href) {
     Component = External
+    componentProps.href = props.href
+    if (props.target) {
+      componentProps.target = props.target
+    }
+    if (props.rel) {
+      componentProps.rel = props.rel
+    }
   } else if (props.to) {
     Component = Internal
     componentProps.to = props.to

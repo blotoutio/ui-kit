@@ -47,6 +47,8 @@ interface ButtonProps {
   variant?: 'solid' | 'flat' | 'outline' | 'light'
   type?: string
   form?: string
+  target?: string
+  rel?: string
 }
 
 interface ConfirmDialogProps {
