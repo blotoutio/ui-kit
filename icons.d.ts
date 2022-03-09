@@ -86,3 +86,5 @@ export declare const World: (props: IconInterface) => React.ReactElement
 export declare const Android: (props: IconInterface) => React.ReactElement
 export declare const IOS: (props: IconInterface) => React.ReactElement
 export declare const ReactNative: (props: IconInterface) => React.ReactElement
+export declare const Shopify: (props: IconInterface) => React.ReactElement
+export declare const Cloud: (props: IconInterface) => React.ReactElement
