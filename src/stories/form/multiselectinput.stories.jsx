@@ -22,6 +22,11 @@ export const multiSelectInput = (args) => {
     }
   }
 
+  const handleChange = (value) => {
+    setValue(value)
+    setInput('')
+  }
+
   return (
     <CreatableContainer>
       <MultiSelectInput
@@ -31,6 +36,7 @@ export const multiSelectInput = (args) => {
         inputValue={input}
         value={value}
         handleInputChange={setInput}
+        handleChange={handleChange}
         handleKeyDown={handleKeyDown}
         placeholder={args.placeholder}
       />
