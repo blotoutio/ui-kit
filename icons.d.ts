@@ -88,3 +88,6 @@ export declare const IOS: (props: IconInterface) => React.ReactElement
 export declare const ReactNative: (props: IconInterface) => React.ReactElement
 export declare const Shopify: (props: IconInterface) => React.ReactElement
 export declare const Cloud: (props: IconInterface) => React.ReactElement
+export declare const Globe: (props: IconInterface) => React.ReactElement
+export declare const Minus: (props: IconInterface) => React.ReactElement
+export declare const MinusBox: (props: IconInterface) => React.ReactElement
