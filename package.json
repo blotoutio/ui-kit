@@ -1,6 +1,6 @@
 {
   "name": "@blotoutio/ui-kit",
-  "version": "0.14.16",
+  "version": "0.14.17",
   "scripts": {
     "build": "rollup -c",
     "lint": "npm-run-all lint:*",
