@@ -18,9 +18,11 @@ import {
   orange70,
   orange80,
   white,
+  blue30,
 } from '../common/colors'
 
 const getSolidColor = (color) => {
+  console.log(color)
   switch (color) {
     case 'primary': {
       return {
@@ -50,6 +52,7 @@ const getSolidColor = (color) => {
 }
 
 const getFlatColor = (color) => {
+  console.log(color)
   switch (color) {
     case 'primary': {
       return {
@@ -116,6 +119,14 @@ const getLightColor = (color) => {
         bgHover: neutrals20,
         bgActive: neutrals20,
         text: neutrals70,
+      }
+    }
+    case 'secondary': {
+      return {
+        bg: blue30,
+        bgHover: blue50,
+        bgActive: blue50,
+        text: white,
       }
     }
     case 'primary': {
