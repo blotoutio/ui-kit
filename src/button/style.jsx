@@ -22,7 +22,6 @@ import {
 } from '../common/colors'
 
 const getSolidColor = (color) => {
-  console.log(color)
   switch (color) {
     case 'primary': {
       return {
@@ -52,7 +51,6 @@ const getSolidColor = (color) => {
 }
 
 const getFlatColor = (color) => {
-  console.log(color)
   switch (color) {
     case 'primary': {
       return {
