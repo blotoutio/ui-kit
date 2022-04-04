@@ -91,3 +91,4 @@ export declare const Cloud: (props: IconInterface) => React.ReactElement
 export declare const Globe: (props: IconInterface) => React.ReactElement
 export declare const Minus: (props: IconInterface) => React.ReactElement
 export declare const MinusBox: (props: IconInterface) => React.ReactElement
+export declare const Tiktok: (props: IconInterface) => React.ReactElement
