@@ -67,7 +67,7 @@ interface DataTableProps {
   emptyCell?: string
   hasPagination?: boolean
   loader?: boolean
-  noData?: string[]
+  noData?: string
   perPage?: SelectValue
   searchable?: boolean
   type?: 'table'
