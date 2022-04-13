@@ -18,8 +18,6 @@ import {
   LoaderContainer,
   Wrapper,
 } from './style'
-import autoTable from 'jspdf-autotable'
-import jsPDF from 'jspdf'
 import Input from '../input'
 import { Download, Search } from '../icons'
 import { SimpleSelect } from '../select'
@@ -95,22 +93,6 @@ const DataTable = ({
       tabularData.push(newRow)
     }
     return tabularData
-  }
-
-  const handlePDF = (fileName) => {
-    const tableData = extractText(totalData)
-    const doc = new jsPDF({
-      orientation: 'landscape',
-    })
-    autoTable(doc, {
-      head: [headers],
-      body: tableData,
-      theme: 'plain',
-      styles: {
-        fontSize: 12,
-      },
-    })
-    doc.save(fileName)
   }
 
   const handleCSV = (fileName) => {
@@ -215,12 +197,6 @@ const DataTable = ({
               {downloadable && (
                 <>
                   {Component}
-                  <DownloadWrapper
-                    onClick={() => handlePDF(`${type}-data.pdf`)}
-                  >
-                    <Download />
-                    <span>PDF</span>
-                  </DownloadWrapper>
                   <DownloadWrapper
                     onClick={() => handleCSV(`${type}-data.csv`)}
                   >

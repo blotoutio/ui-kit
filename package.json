@@ -32,8 +32,6 @@
   "module": "esm/index.js",
   "dependencies": {
     "echarts": "^5.0.2",
-    "jspdf": "^2.5.1",
-    "jspdf-autotable": "^3.5.23",
     "react-select": "^4.2.1"
   },
   "peerDependencies": {
