@@ -219,7 +219,7 @@ interface SimpleAsyncSelectProps {
 interface SnackbarProps {
   message: string
   onClose: () => void
-  variant?: 'success' | 'error'
+  variant?: 'success' | 'error' | 'info' | 'warning'
 }
 
 interface SpinnerProps {
