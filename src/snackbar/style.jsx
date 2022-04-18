@@ -1,18 +1,50 @@
-import styled from 'styled-components'
-import { errorJuice, successJuice, white } from '../common/colors'
+import styled, { css } from 'styled-components'
+import {
+  errorJuice,
+  successJuice,
+  white,
+  link,
+  attentionEasy,
+} from '../common/colors'
+
+const getColors = (variant) => {
+  switch (variant) {
+    case 'success': {
+      return css`
+        background: ${successJuice};
+        color: ${white};
+      `
+    }
+    case 'error': {
+      return css`
+        background: ${errorJuice};
+        color: ${white};
+      `
+    }
+    case 'info': {
+      return css`
+        background: ${link};
+        color: ${white};
+      `
+    }
+    case 'warning': {
+      return css`
+        background: ${attentionEasy};
+      `
+    }
+  }
+}
 
 export const Wrapper = styled.div`
   position: fixed;
   top: 40px;
   right: 40px;
   z-index: 5000;
-  background: ${({ variant }) =>
-    variant === 'success' ? successJuice : errorJuice};
-  color: ${white};
   display: flex;
   align-items: center;
   padding: 10px 15px;
   border-radius: 3px;
+  {${({ variant }) => getColors(variant)}
 `
 
 export const Text = styled.div`

@@ -42,7 +42,7 @@ SnackBar.args = {
 }
 SnackBar.argTypes = {
   variant: {
-    options: ['error', 'success'],
+    options: ['error', 'success', 'info', 'warning'],
     control: {
       type: 'radio',
     },
