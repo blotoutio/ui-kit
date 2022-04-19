@@ -78,7 +78,7 @@ interface DialogProps {
   title: string
   className?: string
   disabledOutline?: boolean
-  onClose: () => void
+  onClose?: () => void
   variant?: 'normal' | 'form'
 }
 

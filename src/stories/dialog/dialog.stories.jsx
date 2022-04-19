@@ -18,7 +18,9 @@ export const Dialog = (args) => {
 
   return (
     <>
-      {isDisplay && <DialogBox {...args} onClose={changeDisplay} />}
+      {isDisplay && (
+        <DialogBox {...args} onClose={args.close ? changeDisplay : null} />
+      )}
       {!isDisplay && (
         <ButtonContainer>
           <Button
@@ -43,6 +45,9 @@ Dialog.argTypes = {
   children: {
     control: 'text',
   },
+  close: {
+    control: 'boolean',
+  },
 }
 
 Dialog.component = 'Dialog'
@@ -51,4 +56,5 @@ Dialog.args = {
   title: 'Dialog',
   variant: 'normal',
   children: 'My content',
+  close: false,
 }

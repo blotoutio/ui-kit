@@ -16,9 +16,11 @@ const Dialog = ({
       <Modal variant={variant}>
         <Header>
           <Title>{title}</Title>
-          <Close className={'close-button'} onClick={onClose}>
-            <CloseIcon />
-          </Close>
+          {onClose && (
+            <Close className={'close-button'} onClick={onClose}>
+              <CloseIcon />
+            </Close>
+          )}
         </Header>
         <Content className={'dialog-content'}>{children}</Content>
       </Modal>
