@@ -53,6 +53,7 @@ interface ButtonProps {
 
 interface ConfirmDialogProps {
   title?: string
+  actionName?: string
   handleClose: any
   handleDelete: any
   children: React.ReactNode[]
