@@ -73,10 +73,10 @@ const getOptions = (data) => {
       )
 
       return `
-          <b style="color: ${params[2].color}">Unique (${params[2].data})</b><br/><br/>
-          <b style="color: ${params[0].color}">Organic (${params[0].data})</b><br/>
+          <b style="color: ${params[2].color}">${data.bars[2]} (${params[2].data})</b><br/><br/>
+          <b style="color: ${params[0].color}">${data.bars[0]} (${params[0].data})</b><br/>
           ${organic}<br/>
-          <b style="color: ${params[1].color}">Non-Organic (${params[1].data})</b><br/>
+          <b style="color: ${params[1].color}">${data.bars[1]} (${params[1].data})</b><br/>
           ${nonOrganic}
         `
     }
