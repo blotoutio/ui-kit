@@ -107,11 +107,6 @@ export const StyledHeader = styled.tr`
   filter: drop-shadow(0 3px 20px rgba(23, 42, 65, 0.08));
 `
 
-export const Section = styled.div`
-  display: flex;
-  align-items: center;
-`
-
 export const HeaderSection = styled.div`
   display: flex;
   align-items: center;
@@ -122,36 +117,22 @@ export const HeaderSection = styled.div`
   }
 `
 
-export const FooterSection = styled.div`
+export const Left = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 24px;
-
   > * {
-    margin-right: 16px;
+    margin-right: 24px;
   }
 `
 
-export const Left = styled(Section)`
-  > * {
-    margin-right: ${({ type }) => (type === 'footer' ? '16px' : '24px')};
-  }
-`
-
-export const Right = styled(Section)`
+export const Right = styled.div`
+  display: flex;
+  align-items: center;
   color: ${neutrals40};
   margin-left: auto;
   > * {
     margin-left: 36px;
   }
-`
-
-export const StyledText = styled.span`
-  text-align: center;
-  vertical-align: top;
-  color: ${neutrals70};
-  font-size: ${({ type }) => (type === 'small' ? '14px' : '16px')};
-  line-height: ${({ type }) => (type === 'small' ? '20px' : '24px')};
 `
 
 export const DownloadWrapper = styled.div`
@@ -177,15 +158,6 @@ export const TableWrapper = styled.div`
   border-radius: 5px 0 0 5px;
   width: 100%;
   overflow: auto;
-`
-
-export const PgNo = styled.a`
-  text-decoration: none;
-  padding: 7px 12px;
-  font-size: 14px;
-  line-height: 20px;
-  color: ${({ active }) => (active ? neutrals70 : neutrals40)};
-  ${({ disabled }) => (disabled ? '' : 'cursor: pointer')};
 `
 
 export const LoaderContainer = styled.div`

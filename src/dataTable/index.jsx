@@ -10,20 +10,16 @@ import {
   Left,
   Right,
   DownloadWrapper,
-  Section,
-  StyledText,
-  PgNo,
   HeaderSection,
-  FooterSection,
   LoaderContainer,
   Wrapper,
 } from './style'
 import Input from '../input'
 import { Download, Search } from '../icons'
-import { SimpleSelect } from '../select'
 import { perPageOptions } from '../common/utils'
 import { neutrals40 } from '../common/colors'
 import * as ReactDomServer from 'react-dom/server'
+import { Pagination } from '../pagination'
 import Spinner from '../spinner'
 
 const DataTable = ({
@@ -42,32 +38,11 @@ const DataTable = ({
 }) => {
   const [searchText, setSearchText] = useState('')
   const [totalData, setTotalData] = useState(rows)
-  const [filteredData, setFilteredData] = useState([])
-  const [rowsPerPage, setRowsPerPage] = useState(perPage)
-  const [curPage, setCurPage] = useState(1)
-  const [startRow, setStartRow] = useState(1)
-  const [endRow, setEndRow] = useState(20)
-  const [pageNumbers, setPageNumbers] = useState([1])
-  const [showFooter, setShowFooter] = useState(false)
+  const [blockData, setBlockData] = useState([])
 
   useEffect(() => {
-    setStartRow(1)
     setTotalData(rows)
-    setSearchText('')
-    setRowsPerPage(perPage)
-    if (rows) {
-      if (rows.length > perPage.value) {
-        setShowFooter(true)
-      }
-      setEndRow(Math.min(rows.length, perPage.value))
-      setFilteredData(rows.slice(0, Math.min(rows.length, perPage.value)))
-      getPageNumbers(curPage, rows.length, perPage.value)
-    } else {
-      setShowFooter(false)
-      setEndRow(0)
-      setFilteredData([])
-    }
-  }, [rows])
+  }, [JSON.stringify(rows)])
 
   const extractText = (data) => {
     const elementToString = (element) => {
@@ -120,72 +95,6 @@ const DataTable = ({
     }
     setSearchText(e.target.value)
     setTotalData(totalRows)
-    setCurPage(1)
-    setStartRow(1)
-    setEndRow(Math.min(totalRows.length, 20))
-    setFilteredData(totalRows.slice(0, 20))
-    getPageNumbers(1, totalRows.length, rowsPerPage.value)
-  }
-
-  const handleRowsPerPage = (e) => {
-    setRowsPerPage(e)
-    setCurPage(1)
-    setStartRow(1)
-    setEndRow(Math.min(totalData.length, e.value))
-    setFilteredData(totalData.slice(0, e.value))
-    getPageNumbers(1, totalData.length, e.value)
-  }
-
-  const range = (left, right, inc = 1) => {
-    const range = []
-    for (let val = left; val <= right; val += inc) {
-      range.push(val)
-    }
-    return range
-  }
-
-  const getPageNumbers = (currentPage, totalRows, perPage) => {
-    const totalPages = Math.ceil(totalRows / perPage)
-    // if totalPages is small, showing all page numbers in pagination
-    let pageNums = ['<', ...range(1, totalPages), '>']
-    if (totalPages > 7) {
-      const startPage = Math.max(currentPage - 1, 2)
-      const endPage = Math.min(currentPage + 1, totalPages - 1)
-      pageNums = range(startPage, endPage)
-
-      if (currentPage <= 3) {
-        pageNums = ['<', 1, 2, 3, 4, 5, '...', totalPages, '>']
-      } else if (currentPage >= totalPages - 2) {
-        pageNums = ['<', 1, '...', ...range(totalPages - 4, totalPages), '>']
-      } else {
-        pageNums = ['<', 1, '...', ...pageNums, '...', totalPages, '>']
-      }
-    }
-    setPageNumbers(pageNums)
-  }
-
-  const handlePageChange = (e) => {
-    if (e.target.innerText === '...') return
-    let currentPage = curPage
-    if (e.target.innerText === '<') {
-      currentPage -= 1
-    } else if (e.target.innerText === '>') {
-      currentPage += 1
-    } else {
-      currentPage = parseInt(e.target.innerText)
-    }
-    if (
-      currentPage > 0 &&
-      currentPage <= Math.ceil(totalData.length / rowsPerPage.value)
-    ) {
-      setCurPage(currentPage)
-      const startRow = (currentPage - 1) * rowsPerPage.value + 1
-      const endRow = Math.min(totalData.length, currentPage * rowsPerPage.value)
-      setStartRow(startRow)
-      setEndRow(endRow)
-      setFilteredData(totalData.slice(startRow - 1, endRow))
-      getPageNumbers(currentPage, totalData.length, rowsPerPage.value)
-    }
   }
 
   const getHeaderSection = () => {
@@ -230,36 +139,11 @@ const DataTable = ({
     return (
       <>
         {hasPagination && (
-          <FooterSection>
-            <Left type='footer'>
-              <StyledText type='small'>View</StyledText>
-              <SimpleSelect
-                margin={0}
-                width={100}
-                value={rowsPerPage}
-                options={perPageOptions}
-                handleChange={handleRowsPerPage}
-              />
-              <StyledText type='small'>results per page</StyledText>
-            </Left>
-            <Right>
-              <StyledText type='small'>{`Results: ${startRow} - ${endRow} of ${totalData.length}`}</StyledText>
-              <Section>
-                {pageNumbers.map((page, index) => {
-                  return (
-                    <PgNo
-                      key={index}
-                      active={curPage === page}
-                      disabled={page === '...'}
-                      onClick={handlePageChange}
-                    >
-                      {page}
-                    </PgNo>
-                  )
-                })}
-              </Section>
-            </Right>
-          </FooterSection>
+          <Pagination
+            data={totalData}
+            perPage={perPage}
+            setBlockData={setBlockData}
+          />
         )}
       </>
     )
@@ -298,7 +182,7 @@ const DataTable = ({
                   </StyledTr>
                 ) : (
                   <>
-                    {filteredData.map((row, i) => (
+                    {blockData.map((row, i) => (
                       <StyledTr
                         className={`tr-${i}`}
                         key={`tr-${i}`}
@@ -319,7 +203,7 @@ const DataTable = ({
               </tbody>
             </StyledTable>
           </TableWrapper>
-          {showFooter && getFooterSection()}
+          {getFooterSection()}
         </>
       )}
     </Wrapper>

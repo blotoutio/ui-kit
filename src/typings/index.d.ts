@@ -253,6 +253,15 @@ interface ToggleProps {
   isDisable?: boolean
 }
 
+interface PaginationProps {
+  data: ((string | React.ReactElement)[] | React.ReactElement)[]
+  setBlockData: (
+    value: ((string | React.ReactElement)[] | React.ReactElement)[]
+  ) => void
+  perPage?: { label: string; value: number }
+  paginationType?: 'large' | 'small'
+}
+
 export declare const BarChart: (props: BarChartProps) => React.ReactElement
 export declare const Box: (props: BoxProps) => React.ReactElement
 export declare const Button: (props: ButtonProps) => React.ReactElement
@@ -260,6 +269,7 @@ export declare const ConfirmDialog: (
   props: ConfirmDialogProps
 ) => React.ReactElement
 export declare const DataTable: (props: DataTableProps) => React.ReactElement
+export declare const Pagination: (props: PaginationProps) => React.ReactElement
 export declare const Dialog: (props: DialogProps) => React.ReactElement
 export declare const Dropdown: (props: DropdownProps) => React.ReactElement
 export declare const ButtonDropdown: (
