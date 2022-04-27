@@ -42,6 +42,9 @@ export const Content = styled.div`
 `
 
 export const Heading = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   & > span {
     font-weight: bold;
     font-size: 20px;
