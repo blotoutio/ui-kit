@@ -52,6 +52,7 @@ export declare const Download: (props: IconInterface) => React.ReactElement
 export declare const CountryVisits: (props: IconInterface) => React.ReactElement
 export declare const NewUser: (props: IconInterface) => React.ReactElement
 export declare const ActiveUser: (props: IconInterface) => React.ReactElement
+export declare const Info: (props: IconInterface) => React.ReactElement
 export declare const VisitorLog: (props: IconInterface) => React.ReactElement
 export declare const Browser: (props: IconInterface) => React.ReactElement
 export declare const EmailUsers: (props: IconInterface) => React.ReactElement
