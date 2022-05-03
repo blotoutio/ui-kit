@@ -52,7 +52,7 @@ export const Section = styled.div`
 
 export const Left = styled(Section)`
   > * {
-    margin-right: 16px;
+    margin-right: 12px;
   }
 `
 

@@ -31,7 +31,7 @@ const DataTable = ({
   Component,
   loader = false,
   type = 'table',
-  perPage = perPageOptions[1],
+  perPage = perPageOptions[2],
   downloadable = true,
   searchable = true,
   hasPagination = true,
