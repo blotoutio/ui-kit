@@ -168,6 +168,7 @@ const chartNames = [
   'Eggplant',
   'Pine Green',
   'Red',
+  'Red (Salsa)',
   'Sky Blue',
   'Green',
   'Saffron',
