@@ -6,6 +6,11 @@ const getModalSize = (variant) => {
     return css`
       max-width: 600px;
     `
+  } else if (variant === 'table') {
+    return css`
+      max-width: 1273px;
+      max-height: 550px;
+    `
   }
 
   return css`
