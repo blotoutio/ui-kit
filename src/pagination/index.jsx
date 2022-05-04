@@ -20,6 +20,8 @@ export const Pagination = ({
     setStartRow(1)
     setCurPage(1)
     setRowsPerPage(perPage)
+    setShowFooter(false)
+
     if (data) {
       if (data.length > perPage.value) {
         setShowFooter(true)
@@ -30,7 +32,6 @@ export const Pagination = ({
     } else {
       setEndRow(0)
       setBlockData([])
-      setShowFooter(false)
     }
   }, [JSON.stringify(data)])
 
