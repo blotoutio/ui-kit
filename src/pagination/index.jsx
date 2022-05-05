@@ -145,6 +145,7 @@ export const Pagination = ({
                 value={rowsPerPage}
                 options={perPageOptions}
                 handleChange={handleRowsPerPage}
+                type='medium'
               />
               <StyledText>results per page</StyledText>
             </Left>

@@ -12,6 +12,7 @@ export const DataTable = (args) => {
       noData={args.noData}
       searchable={args.showSearch}
       downloadable={args.showDownload}
+      perPage={{ label: args.perPage, value: args.perPage }}
     />
   )
 }
@@ -23,9 +24,15 @@ DataTable.args = {
     ['sdk_start', '1', '2'],
     ['visibility_hidden', '3', '4'],
     ['hover', '5', '6'],
+    ['hover', '5', '6'],
+    ['hover', '5', '6'],
+    ['hover', '5', '6'],
+    ['hover', '5', '6'],
+    ['hover', '5', '6'],
   ],
   showSearch: true,
   showDownload: true,
+  perPage: 5,
 }
 
 DataTable.component = 'DataTable'
