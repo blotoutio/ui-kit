@@ -42,6 +42,9 @@ const DataTable = ({
 
   useEffect(() => {
     setTotalData(rows)
+    if (!hasPagination) {
+      setBlockData(rows)
+    }
   }, [JSON.stringify(rows)])
 
   const extractText = (data) => {
