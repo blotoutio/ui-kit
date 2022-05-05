@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
   StyledTable,
   StyledTd,
@@ -42,10 +42,7 @@ const DataTable = ({
 
   useEffect(() => {
     setTotalData(rows)
-    if (!hasPagination) {
-      setBlockData(rows)
-    }
-  }, [JSON.stringify(rows)])
+  }, [rows])
 
   const extractText = (data) => {
     const elementToString = (element) => {
@@ -152,6 +149,31 @@ const DataTable = ({
     )
   }
 
+  const generateRows = () => {
+    let data = totalData
+    if (hasPagination) {
+      data = blockData
+    }
+
+    return (
+      <>
+        {data.map((row, i) => (
+          <StyledTr
+            className={`tr-${i}`}
+            key={`tr-${i}`}
+            hasColor={i % 2 === 1}
+          >
+            {row.map((cell, j) => (
+              <StyledTd className={`td-${j}`} key={`td-${i}-${j}-${cell}`}>
+                {cell != null ? cell : emptyCell || ''}
+              </StyledTd>
+            ))}
+          </StyledTr>
+        ))}
+      </>
+    )
+  }
+
   return (
     <Wrapper>
       {getHeaderSection()}
@@ -184,24 +206,7 @@ const DataTable = ({
                     </NoData>
                   </StyledTr>
                 ) : (
-                  <>
-                    {blockData.map((row, i) => (
-                      <StyledTr
-                        className={`tr-${i}`}
-                        key={`tr-${i}`}
-                        hasColor={i % 2 === 1}
-                      >
-                        {row.map((cell, j) => (
-                          <StyledTd
-                            className={`td-${j}`}
-                            key={`td-${i}-${j}-${cell}`}
-                          >
-                            {cell != null ? cell : emptyCell || ''}
-                          </StyledTd>
-                        ))}
-                      </StyledTr>
-                    ))}
-                  </>
+                  generateRows()
                 )}
               </tbody>
             </StyledTable>

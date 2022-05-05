@@ -5,7 +5,7 @@ import { Section, StyledText, PgNo, FooterSection, Left, Right } from './style'
 
 export const Pagination = ({
   data,
-  perPage = { label: '20', value: 20 },
+  perPage = perPageOptions[2],
   setBlockData,
   paginationType = 'large',
 }) => {
@@ -33,7 +33,7 @@ export const Pagination = ({
       setEndRow(0)
       setBlockData([])
     }
-  }, [JSON.stringify(data)])
+  }, [data])
 
   const handleRowsPerPage = (e) => {
     setCurPage(1)
