@@ -81,7 +81,7 @@ interface DialogProps {
   className?: string
   disabledOutline?: boolean
   onClose?: () => void
-  variant?: 'normal' | 'form'
+  variant?: 'normal' | 'form' | 'table'
 }
 
 interface DropdownProps {
