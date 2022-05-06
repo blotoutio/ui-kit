@@ -72,6 +72,7 @@ interface DataTableProps {
   perPage?: SelectValue
   searchable?: boolean
   type?: 'table'
+  onDoubleClick?: (index: number) => void
 }
 
 interface DialogProps {
@@ -237,6 +238,7 @@ interface TableProps {
   ) => React.ReactNode
   headers?: string[] | React.ReactNode[]
   noData?: string[]
+  onDoubleClick?: (index: number) => void
 }
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {

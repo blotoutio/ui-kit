@@ -81,6 +81,16 @@ export const StyledTr = styled.tr`
   background: ${({ hasColor }) => (hasColor ? neutrals10 : 'none')};
   color: ${neutrals70};
 
+  ${({ hasHover }) =>
+    hasHover
+      ? `
+      cursor: pointer;
+      
+      &:hover {
+        background: ${neutrals20};
+      }`
+      : ''}
+
   &:first-of-type {
     td {
       border-top: 1px solid ${neutrals20};

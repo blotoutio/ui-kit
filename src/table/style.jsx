@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { neutrals20, neutrals70 } from '../common/colors'
+import { neutrals20, neutrals70, neutrals10 } from '../common/colors'
 
 export const StyledTable = styled.table`
   width: 100%;
@@ -39,4 +39,16 @@ export const NoData = styled.div`
   color: ${neutrals70};
   text-align: center;
   padding: 20px;
+`
+
+export const StyledTr = styled.tr`
+  ${({ hasHover }) =>
+    hasHover
+      ? `
+      cursor: pointer;
+      
+      &:hover {
+        background: ${neutrals10};
+      }`
+      : ''}
 `
