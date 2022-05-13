@@ -91,6 +91,7 @@ export const SimpleSelect = (props) => {
     >
       <Component
         cssType={props.type}
+        menuPosition='fixed'
         defaultValue={props.defaultValue}
         classNamePrefix={props.classNamePrefix}
         isDisabled={props.isDisabled}
@@ -157,6 +158,7 @@ export const SimpleAsyncSelect = (props) => {
       <Component
         cssType={props.type}
         id={props.id}
+        menuPosition='fixed'
         loadOptions={props.loadOptions}
         classNamePrefix={props.classNamePrefix}
         onChange={props.handleChange}
