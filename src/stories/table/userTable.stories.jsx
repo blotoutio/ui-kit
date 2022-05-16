@@ -102,7 +102,6 @@ export const UserTable = (args) => {
       downloadable={args.showDownload}
       extraColumns={extraColumns}
       addColumn={addColumn}
-      hasExtraColumn={args.hasExtraColumn}
     />
   )
 }
@@ -111,7 +110,6 @@ UserTable.args = {
   headers: ['Name', 'Jul 06-Jul 12', 'Jul 13-Jul 19'],
   noData: ['No additional data found for the last week.'],
   rows: rows,
-  hasExtraColumn: true,
   showDownload: true,
   extraColumns,
 }
