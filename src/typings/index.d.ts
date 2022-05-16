@@ -75,6 +75,22 @@ interface DataTableProps {
   onDoubleClick?: (index: number) => void
 }
 
+interface UserTableProps {
+  rows?: string[][] | React.ReactNode[][]
+  noData?: string
+  headers: string[] | React.ReactNode[]
+  emptyCell?: string
+  className?: string
+  Component?: React.ReactNode | React.ReactNode[]
+  loader?: boolean
+  type?: 'table'
+  perPage?: SelectValue
+  downloadable?: boolean
+  hasPagination?: boolean
+  extraColumns?: Record<string, string>[]
+  addColumn?: () => void
+}
+
 interface DialogProps {
   children: React.ReactNode | React.ReactNode[]
   title: string
@@ -271,6 +287,7 @@ export declare const ConfirmDialog: (
   props: ConfirmDialogProps
 ) => React.ReactElement
 export declare const DataTable: (props: DataTableProps) => React.ReactElement
+export declare const UserTable: (props: UserTableProps) => React.ReactElement
 export declare const Pagination: (props: PaginationProps) => React.ReactElement
 export declare const Dialog: (props: DialogProps) => React.ReactElement
 export declare const Dropdown: (props: DropdownProps) => React.ReactElement

@@ -37,7 +37,6 @@ const UserTable = ({
   type = 'table',
   perPage = perPageOptions[2],
   downloadable = true,
-  hasExtraColumn = false,
   hasPagination = true,
   extraColumns = [],
   addColumn,
@@ -148,7 +147,7 @@ const UserTable = ({
               <Button
                 color='neutral'
                 onClick={() => setShowDialog(true)}
-                isDisabled={!hasExtraColumn}
+                isDisabled={!extraColumns || extraColumns.length === 0}
               >
                 <Dots />
               </Button>
