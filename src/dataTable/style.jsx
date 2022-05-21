@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   neutrals10,
   neutrals20,
@@ -77,19 +77,26 @@ export const NoData = styled.td`
   border-right: 1px solid ${neutrals20};
 `
 
-export const StyledTr = styled.tr`
-  background: ${({ hasColor }) => (hasColor ? neutrals10 : 'none')};
-  color: ${neutrals70};
+const getStyles = (p) => {
+  const { hasHover, isRowActive, hasColor } = p
+  const color = isRowActive ? white : neutrals70
+  const background = isRowActive ? neutrals70 : hasColor ? neutrals10 : 'none'
+  const cursor = hasHover ? 'pointer' : ''
+  const hoverBackground = isRowActive ? neutrals70 : hasHover ? neutrals20 : ''
 
-  ${({ hasHover }) =>
-    hasHover
-      ? `
-      cursor: pointer;
-      
-      &:hover {
-        background: ${neutrals20};
-      }`
-      : ''}
+  return css`
+    color: ${color};
+    background: ${background};
+    cursor: ${cursor};
+
+    &:hover {
+      background: ${hoverBackground};
+    }
+  `
+}
+
+export const StyledTr = styled.tr`
+  ${(p) => getStyles(p)};
 
   &:first-of-type {
     td {
