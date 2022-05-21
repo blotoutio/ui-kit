@@ -36,6 +36,9 @@ const DataTable = ({
   searchable = true,
   hasPagination = true,
   onDoubleClick,
+  isRowActive = () => {
+    return false
+  },
 }) => {
   const [searchText, setSearchText] = useState('')
   const [totalData, setTotalData] = useState(rows)
@@ -165,6 +168,7 @@ const DataTable = ({
             hasColor={i % 2 === 1}
             onDoubleClick={onDoubleClick ? onDoubleClick.bind(this, i) : null}
             hasHover={!!onDoubleClick}
+            isRowActive={isRowActive(row)}
           >
             {row.map((cell, j) => (
               <StyledTd className={`td-${j}`} key={`td-${i}-${j}-${cell}`}>
