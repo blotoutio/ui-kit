@@ -119,7 +119,7 @@ interface DropdownProps {
   noOptionsMessage?: (arg0: string) => string
   options?: SelectValue[]
   placeholder?: string
-  position?: 'left'
+  position?: 'left' | 'right'
   icon?: React.ReactNode | React.ReactNode[]
   size?: 'M' | 'S'
   closeMenuOnSelect?: boolean
@@ -138,7 +138,7 @@ interface ButtonDropdownProps {
   noOptionsMessage?: (arg0: string) => string
   options?: SelectValue[]
   placeholder?: string
-  position?: 'left'
+  position?: 'left' | 'right'
   icon: React.ReactNode | React.ReactNode[]
 }
 
