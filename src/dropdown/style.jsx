@@ -14,7 +14,7 @@ import {
 const getPosition = (category, position) => {
   if (category) {
     return css`
-      right: 100%;
+      left: 100%;
       top: 0;
     `
   }
