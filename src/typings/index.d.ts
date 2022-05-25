@@ -184,6 +184,7 @@ interface LineChartProps {
 interface LoaderProps {
   className?: string
   variation?: 'global' | 'local'
+  zIndex?: number
 }
 
 interface MultiSelectInputProps {
@@ -316,7 +317,7 @@ export declare const Table: (props: TableProps) => React.ReactElement
 export declare const Textarea: (props: TextareaProps) => React.ReactElement
 export declare const Toggle: (props: ToggleProps) => React.ReactElement
 
-export declare const useLoadingStatus: () => {
+export declare const useLoadingStatus: (defaultValue?: boolean) => {
   isLoading: boolean
   showLoader: (isLoading: boolean) => void
 }

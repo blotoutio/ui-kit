@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { white } from '../common/colors'
 
-const getVariation = (type) => {
+const getVariation = (type, zIndex) => {
   if (type === 'global') {
     return css`
       position: fixed;
@@ -11,7 +11,7 @@ const getVariation = (type) => {
 
   return css`
     position: absolute;
-    z-index: 10;
+    z-index: ${zIndex || 10};
     background: ${white};
     border-radius: 5px;
     top: 0;
@@ -25,5 +25,5 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${({ type }) => getVariation(type)}
+  ${({ type, zIndex }) => getVariation(type, zIndex)}
 `

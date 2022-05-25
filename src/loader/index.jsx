@@ -8,8 +8,8 @@ import { useState } from 'react'
   - local
  */
 
-export function useLoadingStatus() {
-  const [isLoading, setIsLoading] = useState(false)
+export function useLoadingStatus(defaultValue) {
+  const [isLoading, setIsLoading] = useState(!!defaultValue)
 
   const showLoader = (loading) => {
     setIsLoading(loading)
@@ -25,7 +25,7 @@ const Loader = (props) => {
   const type = props.variation || 'local'
 
   return (
-    <Wrapper className={props.className} type={type}>
+    <Wrapper className={props.className} type={type} zIndex={props.zIndex}>
       <Spinner />
     </Wrapper>
   )
