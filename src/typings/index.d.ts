@@ -192,7 +192,7 @@ interface MultiSelectInputProps {
   handleInputChange: (value: string) => void
   handleKeyDown: (value: SelectValue) => void
   inputValue: string | number
-  value: string[]
+  value: SelectValue[]
   className?: string
   error?: boolean
   isClearable?: boolean
