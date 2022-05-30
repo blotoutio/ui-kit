@@ -102,7 +102,7 @@ const getOptions = ({
               value = `${data.count[i][index]} (${label})`
             }
 
-            return `<div>${item.marker} <b>${
+            return `<div>${item.axisValueLabel}</div><div>${item.marker} <b>${
               item.seriesName || item.axisValue
             }</b> ${value}</div>`
           })
