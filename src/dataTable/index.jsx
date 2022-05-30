@@ -35,6 +35,7 @@ const DataTable = ({
   downloadable = true,
   searchable = true,
   hasPagination = true,
+  onSingleClick,
   onDoubleClick,
   isRowActive = () => {
     return false
@@ -166,8 +167,9 @@ const DataTable = ({
             className={`tr-${i}`}
             key={`tr-${i}`}
             hasColor={i % 2 === 1}
+            onClick={onSingleClick ? onSingleClick.bind(this, i) : null}
             onDoubleClick={onDoubleClick ? onDoubleClick.bind(this, i) : null}
-            hasHover={!!onDoubleClick}
+            hasHover={!!onDoubleClick || !!onSingleClick}
             isRowActive={isRowActive(row)}
           >
             {row.map((cell, j) => (

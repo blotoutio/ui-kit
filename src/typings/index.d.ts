@@ -73,6 +73,7 @@ interface DataTableProps {
   searchable?: boolean
   type?: 'table'
   onDoubleClick?: (index: number) => void
+  onSingleClick?: (index: number) => void
 }
 
 interface UserTableProps {
