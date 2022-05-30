@@ -98,3 +98,7 @@ export declare const Report: (props: IconInterface) => React.ReactElement
 export declare const Plus: (props: IconInterface) => React.ReactElement
 export declare const Clone: (props: IconInterface) => React.ReactElement
 export declare const Update: (props: IconInterface) => React.ReactElement
+export declare const BoxCheck: (props: IconInterface) => React.ReactElement
+export declare const RedTick: (props: IconInterface) => React.ReactElement
+export declare const Logo: (props: IconInterface) => React.ReactElement
+export declare const Aws: (props: IconInterface) => React.ReactElement
