@@ -1,4 +1,8 @@
-import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react'
+import {
+  InputHTMLAttributes,
+  KeyboardEvent,
+  TextareaHTMLAttributes,
+} from 'react'
 import { EChartsOption } from 'echarts'
 
 export interface SelectValue {
@@ -190,8 +194,8 @@ interface LoaderProps {
 interface MultiSelectInputProps {
   handleChange: (value: SelectValue[]) => void
   handleInputChange: (inputValue: string) => void
-  handleKeyDown: (value: KeyboardEvent) => void
   inputValue: string | number
+  handleKeyDown: (event: KeyboardEvent) => void
   value: SelectValue[]
   className?: string
   error?: boolean
