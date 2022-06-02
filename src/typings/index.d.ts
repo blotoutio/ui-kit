@@ -197,7 +197,6 @@ interface MultiSelectInputProps {
   className?: string
   error?: boolean
   isClearable?: boolean
-  isMulti?: boolean
   minHeight?: number
   placeholder?: string
 }

@@ -24,7 +24,7 @@ const MultiSelectInput = (props) => {
         components={components}
         inputValue={props.inputValue}
         isClearable={props.isClearable}
-        isMulti={props.isMulti}
+        isMulti={true}
         menuIsOpen={false}
         onChange={props.handleChange}
         onInputChange={props.handleInputChange}
