@@ -195,8 +195,8 @@ interface LoaderProps {
 interface MultiSelectInputProps {
   handleChange: (value: SelectValue[]) => void
   handleInputChange: (inputValue: string) => void
-  inputValue: string | number
   handleKeyDown: (event: KeyboardEvent) => void
+  inputValue: string
   value: SelectValue[]
   className?: string
   error?: boolean
