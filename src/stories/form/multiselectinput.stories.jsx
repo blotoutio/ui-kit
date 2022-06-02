@@ -31,7 +31,6 @@ export const multiSelectInput = (args) => {
     <CreatableContainer>
       <MultiSelectInput
         isClearable={args.isClearable}
-        isMulti={args.isMulti}
         error={args.error}
         inputValue={input}
         value={value}
@@ -45,7 +44,6 @@ export const multiSelectInput = (args) => {
 }
 
 multiSelectInput.args = {
-  isMulti: true,
   isClearable: true,
   error: false,
   placeholder: 'Enter input',
@@ -53,11 +51,6 @@ multiSelectInput.args = {
 
 multiSelectInput.argTypes = {
   isClearable: {
-    control: {
-      type: 'boolean',
-    },
-  },
-  isMulti: {
     control: {
       type: 'boolean',
     },
