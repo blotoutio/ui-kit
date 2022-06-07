@@ -19,7 +19,7 @@ const getOptions = (data) => {
 
   const options = {
     tooltip: {
-      trigger: 'axis',
+      trigger: data.tooltipType === 'item' ? 'item' : 'axis',
       axisPointer: {
         snap: true,
         label: {
@@ -61,6 +61,32 @@ const getOptions = (data) => {
 
   if (data.data[0].breakDown != null) {
     options.tooltip.formatter = (params) => {
+      if (data.tooltipType === 'item') {
+        const { seriesIndex, dataIndex, color } = params
+
+        const eventName = data.bars[seriesIndex]
+        const eventsCount = data.data[seriesIndex].data[dataIndex]
+        const organic = data.data[seriesIndex].breakDown[dataIndex].Organic
+        const nonOrganic =
+          data.data[seriesIndex].breakDown[dataIndex]['Non Organic']
+        const organicElement = Object.entries(organic.breakDown).reduce(
+          (html, [key, value]) => html + `${key}: ${value} <br/>`,
+          ''
+        )
+        const nonOrganicElement = Object.entries(nonOrganic.breakDown).reduce(
+          (html, [key, value]) => html + `${key}: ${value} <br/>`,
+          ''
+        )
+
+        return `
+          <b style="color: ${color}">${eventName} (${eventsCount})</b><br/>
+          <b>Organic (${organic.data})</b><br/>
+          ${organicElement}
+          <b>Non Organic (${nonOrganic.data})</b><br/>
+          ${nonOrganicElement}
+        `
+      }
+
       let organic = data.data[0].breakDown[params[0].dataIndex]
       let nonOrganic = data.data[1].breakDown[params[1].dataIndex]
       organic = Object.entries(organic).reduce(

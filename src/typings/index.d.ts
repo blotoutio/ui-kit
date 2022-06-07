@@ -179,7 +179,9 @@ interface LineChartProps {
     data: [
       {
         data: number[]
-        breakDown?: Record<string, number>[]
+        breakDown?:
+          | Record<string, number>[]
+          | Record<string, Record<string, number | Record<string, number>>>[]
       }
     ]
   }
