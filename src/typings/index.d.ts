@@ -11,6 +11,12 @@ export interface SelectValue {
   [key: string]: any
 }
 
+type InputAction = 'set-value' | 'input-change' | 'input-blur' | 'menu-close'
+
+export interface InputActionMeta {
+  action: InputAction
+}
+
 interface BarChartProps {
   data: {
     categories: string[]
@@ -194,7 +200,10 @@ interface LoaderProps {
 
 interface MultiSelectInputProps {
   handleChange: (value: SelectValue[]) => void
-  handleInputChange: (inputValue: string) => void
+  handleInputChange: (
+    inputValue: string,
+    inputActionMeta: InputActionMeta
+  ) => void
   handleKeyDown: (event: KeyboardEvent) => void
   inputValue: string
   value: SelectValue[]
