@@ -69,6 +69,12 @@ interface ConfirmDialogProps {
   children: React.ReactNode[]
 }
 
+interface SidebarDialogProps {
+  handleClose: any
+  sidebar: React.ReactNode[]
+  children: React.ReactNode[]
+}
+
 interface DataTableProps {
   rows?: string[][] | React.ReactNode[][]
   headers: string[] | React.ReactNode[]
@@ -301,6 +307,9 @@ export declare const Box: (props: BoxProps) => React.ReactElement
 export declare const Button: (props: ButtonProps) => React.ReactElement
 export declare const ConfirmDialog: (
   props: ConfirmDialogProps
+) => React.ReactElement
+export declare const SidebarDialog: (
+  props: SidebarDialogProps
 ) => React.ReactElement
 export declare const DataTable: (props: DataTableProps) => React.ReactElement
 export declare const UserTable: (props: UserTableProps) => React.ReactElement
