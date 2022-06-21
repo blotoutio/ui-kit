@@ -300,6 +300,7 @@ interface PaginationProps {
   ) => void
   perPage?: { label: string; value: number }
   paginationType?: 'large' | 'small'
+  setPageData?: (value: { pageNo: number; perPage: number }) => void
 }
 
 export declare const BarChart: (props: BarChartProps) => React.ReactElement
