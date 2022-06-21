@@ -8,6 +8,7 @@ export const Pagination = ({
   perPage = perPageOptions[2],
   setBlockData,
   paginationType = 'large',
+  setPageData = null,
 }) => {
   const [endRow, setEndRow] = useState(20)
   const [curPage, setCurPage] = useState(1)
@@ -20,6 +21,7 @@ export const Pagination = ({
     setStartRow(1)
     setCurPage(1)
     setRowsPerPage(perPage)
+    setPageData && setPageData({ pageNo: 1, perPage: perPage.value })
     setShowFooter(false)
 
     if (data) {
@@ -41,6 +43,7 @@ export const Pagination = ({
     setRowsPerPage(e)
     setEndRow(Math.min(data.length, e.value))
     setBlockData(data.slice(0, e.value))
+    setPageData && setPageData({ pageNo: 1, perPage: e.value })
     getPageNumbers(1, data.length, e.value)
   }
 
@@ -92,6 +95,8 @@ export const Pagination = ({
       currentPage <= Math.ceil(data.length / rowsPerPage.value)
     ) {
       setCurPage(currentPage)
+      setPageData &&
+        setPageData({ pageNo: currentPage, perPage: rowsPerPage.value })
       const startRow = (currentPage - 1) * rowsPerPage.value + 1
       const endRow = Math.min(data.length, currentPage * rowsPerPage.value)
       setStartRow(startRow)

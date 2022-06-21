@@ -44,6 +44,7 @@ const DataTable = ({
   const [searchText, setSearchText] = useState('')
   const [totalData, setTotalData] = useState(rows)
   const [blockData, setBlockData] = useState([])
+  const [pageData, setPageData] = useState({ pageNo: 1, perPage: 20 })
 
   useEffect(() => {
     setTotalData(rows)
@@ -102,6 +103,10 @@ const DataTable = ({
     setTotalData(totalRows)
   }
 
+  const getRowIdx = (i) => {
+    return (pageData.pageNo - 1) * pageData.perPage + i
+  }
+
   const getHeaderSection = () => {
     return (
       <>
@@ -147,6 +152,7 @@ const DataTable = ({
           <Pagination
             data={totalData}
             perPage={perPage}
+            setPageData={setPageData}
             setBlockData={setBlockData}
           />
         )}
@@ -167,8 +173,12 @@ const DataTable = ({
             className={`tr-${i}`}
             key={`tr-${i}`}
             hasColor={i % 2 === 1}
-            onClick={onSingleClick ? onSingleClick.bind(this, i) : null}
-            onDoubleClick={onDoubleClick ? onDoubleClick.bind(this, i) : null}
+            onClick={
+              onSingleClick ? onSingleClick.bind(this, getRowIdx(i)) : null
+            }
+            onDoubleClick={
+              onDoubleClick ? onDoubleClick.bind(this, getRowIdx(i)) : null
+            }
             hasHover={!!onDoubleClick || !!onSingleClick}
             isRowActive={isRowActive(row)}
           >
