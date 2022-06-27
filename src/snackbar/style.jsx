@@ -4,7 +4,7 @@ import {
   successJuice,
   white,
   link,
-  attentionEasy,
+  attentionJuice,
 } from '../common/colors'
 
 const getColors = (variant) => {
@@ -29,7 +29,7 @@ const getColors = (variant) => {
     }
     case 'warning': {
       return css`
-        background: ${attentionEasy};
+        background: ${attentionJuice};
       `
     }
   }
