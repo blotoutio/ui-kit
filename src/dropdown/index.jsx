@@ -1,4 +1,4 @@
-import { Arrow, Check, RemoveCircle, Search } from '../icons'
+import { Arrow, Check, Search } from '../icons'
 import {
   Wrapper,
   Outline,
@@ -19,7 +19,7 @@ import AsyncSelect from 'react-select/async'
 import { neutrals80 } from '../common/colors'
 import Button from '../button'
 
-const selectStyles = (showSearch) => {
+const selectStyles = (showSearch, externalStyles) => {
   const general = {
     placeholder: () => ({
       fontSize: 14,
@@ -36,6 +36,7 @@ const selectStyles = (showSearch) => {
       fontSize: 14,
       lineHeight: '20px',
     }),
+    ...externalStyles,
   }
 
   if (!showSearch) {
@@ -57,7 +58,9 @@ const selectStyles = (showSearch) => {
       margin: 8,
       border: 'none',
     }),
-    menu: () => ({
+    menu: (base) => ({
+      ...base,
+      position: 'unset',
       boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
     }),
     menuList: (provided) => ({
@@ -186,10 +189,11 @@ const Dropdown = (props) => {
           controlShouldRenderValue={false}
           hideSelectedOptions={false}
           isClearable={props.isClearable}
-          styles={selectStyles(props.isSearchable)}
+          styles={selectStyles(props.isSearchable, props.styles)}
           tabSelectsValue={false}
           noOptionsMessage={props.noOptionsMessage}
           menuPlacement='auto'
+          menuPortalTarget={props.menuPortalTarget}
           {...componentProps}
         />
       </SelectWrapper>
@@ -223,15 +227,15 @@ const Dropdown = (props) => {
   }
 
   const getCurrent = () => {
-    let hasData,
-      count = 0
+    let hasData
+    let count = 0
     if (props.category) {
-      Object.keys(props.value).map((category) => {
+      Object.keys(props.value).forEach((category) => {
         count += props.value[category].data.length
       })
       hasData = !!count
     } else {
-      hasData = props.value && Object.keys(props.value).length ? true : false
+      hasData = !!(props.value && Object.keys(props.value).length)
     }
     return {
       count,

@@ -13,7 +13,7 @@ import Select, { components } from 'react-select'
 import { neutrals80 } from '../common/colors'
 import Button from '../button'
 
-const selectStyles = (showSearch) => {
+const selectStyles = (showSearch, externalStyles) => {
   const general = {
     placeholder: () => ({
       fontSize: 14,
@@ -30,6 +30,7 @@ const selectStyles = (showSearch) => {
       fontSize: 14,
       lineHeight: '20px',
     }),
+    ...externalStyles,
   }
 
   if (!showSearch) {
@@ -51,7 +52,9 @@ const selectStyles = (showSearch) => {
       margin: 8,
       border: 'none',
     }),
-    menu: () => ({
+    menu: (provided) => ({
+      ...provided,
+      position: 'unset',
       boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)',
     }),
     menuList: (provided) => ({
@@ -160,10 +163,11 @@ const ButtonDropdown = (props) => {
           controlShouldRenderValue={false}
           hideSelectedOptions={false}
           isClearable={props.isClearable}
-          styles={selectStyles(props.isSearchable)}
+          styles={selectStyles(props.isSearchable, props.styles)}
           tabSelectsValue={false}
           noOptionsMessage={props.noOptionsMessage}
           menuPlacement='auto'
+          menuPortalTarget={props.menuPortalTarget}
           {...componentProps}
         />
       </SelectWrapper>
