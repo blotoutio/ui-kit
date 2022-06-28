@@ -16,6 +16,7 @@ const MultiSelectInput = (props) => {
         props.error ? `${errorJuice} !important` : neutrals20
       }`,
     }),
+    ...props.styles,
   }
 
   return (
@@ -33,6 +34,7 @@ const MultiSelectInput = (props) => {
         value={props.value}
         styles={customStyles}
         menuPlacement='auto'
+        menuPortalTarget={props.menuPortalTarget}
       />
     </Wrapper>
   )

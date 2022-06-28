@@ -104,6 +104,7 @@ export const SimpleSelect = (props) => {
         isMulti={props.isMulti}
         isSearchable
         menuPlacement='auto'
+        menuPortalTarget={props.menuPortalTarget}
         {...more}
       />
     </Wrapper>
@@ -171,6 +172,8 @@ export const SimpleAsyncSelect = (props) => {
         closeMenuOnSelect={props.closeMenuOnSelect}
         placeholder={props.placeholder}
         menuPlacement='auto'
+        styles={props.styles}
+        menuPortalTarget={props.menuPortalTarget}
         {...more}
       />
     </Wrapper>

@@ -1,4 +1,5 @@
 import {
+  DOMElement,
   InputHTMLAttributes,
   KeyboardEvent,
   TextareaHTMLAttributes,
@@ -140,6 +141,8 @@ interface DropdownProps {
   icon?: React.ReactNode | React.ReactNode[]
   size?: 'M' | 'S'
   closeMenuOnSelect?: boolean
+  menuPortalTarget?: Element
+  styles?: Record<string, number | string>[]
 }
 
 interface ButtonDropdownProps {
@@ -157,6 +160,8 @@ interface ButtonDropdownProps {
   placeholder?: string
   position?: 'left' | 'right'
   icon: React.ReactNode | React.ReactNode[]
+  menuPortalTarget?: Element
+  styles?: Record<string, number | string>[]
 }
 
 interface EChartProps {
@@ -220,6 +225,8 @@ interface MultiSelectInputProps {
   isClearable?: boolean
   minHeight?: number
   placeholder?: string
+  menuPortalTarget?: Element
+  styles?: Record<string, number | string>[]
 }
 
 interface SimpleSelectProps {
@@ -237,6 +244,7 @@ interface SimpleSelectProps {
   type?: 'form' | 'default' | 'medium'
   width?: number
   margin?: number
+  menuPortalTarget?: Element
 }
 
 interface SimpleAsyncSelectProps {
@@ -254,6 +262,8 @@ interface SimpleAsyncSelectProps {
   type?: 'form' | 'default' | 'medium'
   width?: number
   margin?: number
+  menuPortalTarget?: Element
+  styles?: Record<string, number | string>[]
 }
 
 interface SnackbarProps {
