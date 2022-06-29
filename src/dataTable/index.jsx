@@ -29,6 +29,7 @@ const DataTable = ({
   emptyCell,
   className,
   Component,
+  reset = true,
   loader = false,
   type = 'table',
   perPage = perPageOptions[2],
@@ -44,11 +45,14 @@ const DataTable = ({
   const [searchText, setSearchText] = useState('')
   const [totalData, setTotalData] = useState(rows)
   const [blockData, setBlockData] = useState([])
-  const [pageData, setPageData] = useState({ pageNo: 1, perPage: 20 })
+  const [pageData, setPageData] = useState({
+    pageNo: 1,
+    perPage: perPage.value,
+  })
 
   useEffect(() => {
     setTotalData(rows)
-  }, [rows])
+  }, [JSON.stringify(rows)])
 
   const extractText = (data) => {
     const elementToString = (element) => {
@@ -150,6 +154,7 @@ const DataTable = ({
       <>
         {hasPagination && (
           <Pagination
+            reset={reset}
             data={totalData}
             perPage={perPage}
             setPageData={setPageData}

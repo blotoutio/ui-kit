@@ -5,12 +5,13 @@ import { Section, StyledText, PgNo, FooterSection, Left, Right } from './style'
 
 export const Pagination = ({
   data,
-  perPage = perPageOptions[2],
+  reset = true,
   setBlockData,
-  paginationType = 'large',
   setPageData = null,
+  paginationType = 'large',
+  perPage = perPageOptions[2],
 }) => {
-  const [endRow, setEndRow] = useState(20)
+  const [endRow, setEndRow] = useState(perPage.value)
   const [curPage, setCurPage] = useState(1)
   const [startRow, setStartRow] = useState(1)
   const [pageNumbers, setPageNumbers] = useState([])
@@ -18,24 +19,38 @@ export const Pagination = ({
   const [rowsPerPage, setRowsPerPage] = useState(perPage)
 
   useEffect(() => {
-    setStartRow(1)
-    setCurPage(1)
-    setRowsPerPage(perPage)
-    setPageData && setPageData({ pageNo: 1, perPage: perPage.value })
-    setShowFooter(false)
+    if (data && data.length) {
+      const updatedCurPage = reset
+        ? 1
+        : Math.min(Math.ceil(data.length / rowsPerPage.value), curPage)
+      const updatedStartRow = reset
+        ? 1
+        : (updatedCurPage - 1) * rowsPerPage.value + 1
+      const updatedEndRow = reset
+        ? perPage.value
+        : Math.min(updatedCurPage * rowsPerPage.value, data.length)
+      const updatedRowsPerPage = reset ? perPage : rowsPerPage
+      const updatedShowFooter = reset
+        ? data.length > updatedRowsPerPage.value
+        : true
 
-    if (data) {
-      if (data.length > perPage.value) {
-        setShowFooter(true)
-      }
-      setEndRow(Math.min(data.length, perPage.value))
-      setBlockData(data.slice(0, perPage.value))
-      getPageNumbers(curPage, data.length, perPage.value)
+      setPageData &&
+        setPageData({
+          pageNo: updatedCurPage,
+          perPage: updatedRowsPerPage.value,
+        })
+      setEndRow(updatedEndRow)
+      setCurPage(updatedCurPage)
+      setStartRow(updatedStartRow)
+      setShowFooter(updatedShowFooter)
+      setRowsPerPage(updatedRowsPerPage)
+      setBlockData(data.slice(updatedStartRow - 1, updatedEndRow))
+      getPageNumbers(updatedCurPage, data.length, updatedRowsPerPage.value)
     } else {
       setEndRow(0)
       setBlockData([])
     }
-  }, [data])
+  }, [JSON.stringify(data)])
 
   const handleRowsPerPage = (e) => {
     setCurPage(1)

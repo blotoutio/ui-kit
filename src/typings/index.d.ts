@@ -88,6 +88,7 @@ interface DataTableProps {
   perPage?: SelectValue
   searchable?: boolean
   type?: 'table'
+  reset?: boolean
   onDoubleClick?: (index: number) => void
   onSingleClick?: (index: number) => void
 }
@@ -300,6 +301,7 @@ interface PaginationProps {
   ) => void
   perPage?: { label: string; value: number }
   paginationType?: 'large' | 'small'
+  reset?: boolean
   setPageData?: (value: { pageNo: number; perPage: number }) => void
 }
 
