@@ -1,5 +1,12 @@
 import styled, { css } from 'styled-components'
-import { white, blue40, neutrals70, neutrals20 } from '../common/colors'
+import {
+  white,
+  blue40,
+  neutrals70,
+  neutrals20,
+  orange50,
+  successJuice,
+} from '../common/colors'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -9,6 +16,42 @@ export const Wrapper = styled.div`
   padding: 4px 5px;
   align-items: center;
   opacity: ${({ isDisable }) => (isDisable ? 0.5 : 1)};
+
+  &.toggle {
+    position: relative;
+    border-radius: 6px;
+    width: 30px;
+    height: 12px;
+    background-color: ${orange50};
+
+    &.active {
+      background-color: ${successJuice};
+    }
+  }
+`
+
+export const ToggleButton = styled.div`
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 50%;
+  color: white;
+  background: white;
+  text-align: center;
+  cursor: pointer;
+
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+
+  &.active {
+    right: -5px;
+  }
+
+  &.inactive {
+    left: -5px;
+  }
 `
 
 const getColor = (active) => {

@@ -1,5 +1,4 @@
 import {
-  DOMElement,
   InputHTMLAttributes,
   KeyboardEvent,
   TextareaHTMLAttributes,
@@ -298,10 +297,11 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 interface ToggleProps {
   handleChange: (value: SelectValue) => void
-  options: SelectValue[]
   selected: SelectValue
+  options?: SelectValue[]
   className?: string
   isDisable?: boolean
+  style?: string
 }
 
 interface PaginationProps {

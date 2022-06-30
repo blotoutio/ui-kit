@@ -52,7 +52,7 @@ export const Sidebar = styled.div`
   flex-direction: column;
   height: 100%;
   max-width: 300px;
-  margin: auto auto auto -10px;
+  margin-left: -10px;
   border-radius: 10px 0 0 10px;
   overflow: hidden;
 `
@@ -61,7 +61,7 @@ export const MainPanel = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 850px;
-  margin: auto -10px auto auto;
+  margin-right: -10px;
   border-radius: 10px 0 0 10px;
   overflow: hidden;
 `
