@@ -66,13 +66,13 @@ interface ConfirmDialogProps {
   actionName?: string
   handleClose: any
   handleDelete: any
-  children: React.ReactNode[]
+  children: React.ReactNode | React.ReactNode[]
 }
 
 interface SidebarDialogProps {
   handleClose: any
-  sidebar: React.ReactNode[]
-  children: React.ReactNode[]
+  sidebar: React.ReactNode | React.ReactNode[]
+  children: React.ReactNode | React.ReactNode[]
 }
 
 interface DataTableProps {
