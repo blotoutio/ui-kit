@@ -301,7 +301,7 @@ interface ToggleProps {
   options?: SelectValue[]
   className?: string
   isDisable?: boolean
-  style?: string
+  style?: 'options' | 'toggle'
 }
 
 interface PaginationProps {
