@@ -1,10 +1,10 @@
 export default ({ width, height }) => {
   return (
     <svg
-      width={width || '20'}
-      height={height || '20'}
+      width={width || '26'}
+      height={height || '26'}
       fill='none'
-      viewBox='0 0 20 20'
+      viewBox='0 0 24 24'
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
