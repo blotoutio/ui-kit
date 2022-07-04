@@ -1,4 +1,4 @@
-import { perPageOptions } from '../common/utils'
+import { perPageOptions, extractText } from '../common/utils'
 import { SimpleSelect } from '../select'
 import { useState, useEffect } from 'react'
 import { Section, StyledText, PgNo, FooterSection, Left, Right } from './style'
@@ -50,7 +50,7 @@ export const Pagination = ({
       setEndRow(0)
       setBlockData([])
     }
-  }, [JSON.stringify(data)])
+  }, [JSON.stringify(extractText(data))])
 
   const handleRowsPerPage = (e) => {
     setCurPage(1)
