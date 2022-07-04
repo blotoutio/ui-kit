@@ -16,9 +16,8 @@ import {
 } from './style'
 import Input from '../input'
 import { Download, Search } from '../icons'
-import { perPageOptions } from '../common/utils'
+import { perPageOptions, extractText } from '../common/utils'
 import { neutrals40 } from '../common/colors'
-import * as ReactDomServer from 'react-dom/server'
 import { Pagination } from '../pagination'
 import Spinner from '../spinner'
 
@@ -52,33 +51,7 @@ const DataTable = ({
 
   useEffect(() => {
     setTotalData(rows)
-  }, [JSON.stringify(rows)])
-
-  const extractText = (data) => {
-    const elementToString = (element) => {
-      return ReactDomServer.renderToStaticMarkup(element).replace(
-        /<[^>]+>/g,
-        ''
-      )
-    }
-
-    const tabularData = []
-    for (const row of data) {
-      const newRow = []
-      for (const cell of row) {
-        let value = cell
-        if (Array.isArray(cell)) {
-          value = cell.map((item) => elementToString(item)).join(' / ')
-        } else if (typeof cell === 'object') {
-          value = elementToString(cell)
-        }
-
-        newRow.push(value)
-      }
-      tabularData.push(newRow)
-    }
-    return tabularData
-  }
+  }, [JSON.stringify(extractText(rows))])
 
   const handleCSV = (fileName) => {
     const tableData = extractText([headers, ...totalData])
