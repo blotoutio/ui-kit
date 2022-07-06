@@ -287,6 +287,10 @@ interface TableProps {
   headers?: string[] | React.ReactNode[]
   noData?: string[]
   onDoubleClick?: (index: number) => void
+  onScroll?: (e: React.UIEvent<HTMLElement>) => void
+  tableRef?: {
+    [value: number]: React.HTMLTableRowElement
+  }
 }
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
