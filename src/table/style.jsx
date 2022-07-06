@@ -1,5 +1,21 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { neutrals20, neutrals70, neutrals10 } from '../common/colors'
+
+const getScrollableStyles = () => {
+  return css`
+    tbody {
+      display: block;
+      max-height: 300px;
+      overflow: auto;
+    }
+    thead,
+    tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+  `
+}
 
 export const StyledTable = styled.table`
   width: 100%;
@@ -9,6 +25,7 @@ export const StyledTable = styled.table`
   line-height: 24px;
   border-top: ${({ topBorder }) =>
     topBorder ? `1px solid ${neutrals20}` : 'none'};
+  ${({ scrollable }) => (scrollable ? getScrollableStyles() : null)}
 
   b {
     font-variation-settings: 'wght' 500;
