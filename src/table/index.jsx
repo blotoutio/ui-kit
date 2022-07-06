@@ -7,13 +7,26 @@ import {
   StyledTr,
 } from './style'
 
-const Table = ({ headers, rows, className, format, noData, onDoubleClick }) => {
+const Table = ({
+  headers,
+  rows,
+  className,
+  format,
+  noData,
+  onDoubleClick,
+  tableRef = null,
+  onScroll = null,
+}) => {
   if (!rows || rows.length === 0) {
     return <NoData>{noData || 'No data.'}</NoData>
   }
 
   return (
-    <StyledTable className={className} topBorder={!headers || !headers.length}>
+    <StyledTable
+      scrollable={!!onScroll}
+      className={className}
+      topBorder={!headers || !headers.length}
+    >
       {headers && headers.length > 0 && (
         <StyledHeader>
           <tr>
@@ -23,9 +36,10 @@ const Table = ({ headers, rows, className, format, noData, onDoubleClick }) => {
           </tr>
         </StyledHeader>
       )}
-      <tbody>
+      <tbody onScroll={onScroll}>
         {rows.map((row, i) => (
           <StyledTr
+            ref={tableRef ? (ref) => (tableRef.current[i] = ref) : null}
             className={`tr-${i}`}
             data-testid='app-item'
             key={`tr-${i}`}
