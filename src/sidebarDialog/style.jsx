@@ -63,5 +63,4 @@ export const MainPanel = styled.div`
   max-width: 850px;
   margin-right: -10px;
   border-radius: 10px 0 0 10px;
-  overflow: hidden;
 `

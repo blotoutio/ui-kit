@@ -62,11 +62,10 @@ export const Outline = styled.div`
 export const SelectWrapper = styled.div`
   position: absolute;
   width: 270px;
-  z-index: 501;
+  z-index: 9999;
   background-color: ${white};
   border-radius: 4px;
   box-shadow: 0 3px 12px ${black24};
-  overflow: hidden;
   ${({ position, category }) => getPosition(category, position)}
 `
 

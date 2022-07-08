@@ -42,7 +42,7 @@ const selectStyles = (showSearch, externalStyles) => {
   if (!showSearch) {
     return {
       control: (provided) => ({ ...provided, display: 'none' }),
-      menu: () => ({}),
+      menu: (provided) => ({ ...provided, margin: 0 }),
       menuList: (provided) => ({
         ...provided,
         paddingTop: 0,
