@@ -10,6 +10,11 @@ import {
 import { Close } from '../icons'
 
 const SidebarDialog = ({ children, sidebar, handleClose }) => {
+  let isSinglePanel
+  if (!sidebar || sidebar.length === 0) {
+    isSinglePanel = true
+  }
+
   return (
     <Wrapper>
       <Content>
@@ -18,8 +23,10 @@ const SidebarDialog = ({ children, sidebar, handleClose }) => {
             <IconWrapper onClick={handleClose}>
               <Close />
             </IconWrapper>
-            <Sidebar>{sidebar}</Sidebar>
-            <MainPanel>{children}</MainPanel>
+            {!isSinglePanel && <Sidebar edges={'left'}>{sidebar}</Sidebar>}
+            <MainPanel edges={isSinglePanel ? 'full' : 'right'}>
+              {children}
+            </MainPanel>
           </InnerWrapper>
         </OuterWrapper>
       </Content>

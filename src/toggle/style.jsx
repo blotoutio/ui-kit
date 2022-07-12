@@ -18,6 +18,7 @@ export const Wrapper = styled.div`
   opacity: ${({ isDisable }) => (isDisable ? 0.5 : 1)};
 
   &.toggle {
+    cursor: pointer;
     position: relative;
     border-radius: 6px;
     width: 30px;
@@ -41,7 +42,6 @@ export const ToggleButton = styled.div`
   color: white;
   background: white;
   text-align: center;
-  cursor: pointer;
 
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 

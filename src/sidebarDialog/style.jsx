@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { black64, neutrals40, white } from '../common/colors'
 
 export const Wrapper = styled.div`
@@ -34,7 +34,6 @@ export const OuterWrapper = styled.div`
 
 export const InnerWrapper = styled.div`
   display: flex;
-  margin: 0 10px 0;
 `
 
 export const IconWrapper = styled.div`
@@ -47,21 +46,43 @@ export const IconWrapper = styled.div`
   z-index: 10002;
 `
 
+const getEdges = (edges) => {
+  switch (edges) {
+    case 'left': {
+      return css`
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+      `
+    }
+    case 'right': {
+      return css`
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+      `
+    }
+    default: {
+      return css`
+        border-radius: 10px;
+      `
+    }
+  }
+}
+
 export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   max-width: 300px;
-  margin-left: -10px;
-  border-radius: 10px 0 0 10px;
   overflow: hidden;
+
+  ${({ edges }) => getEdges(edges)};
 `
 
 export const MainPanel = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 850px;
-  margin-right: -10px;
-  border-radius: 10px 0 0 10px;
   overflow: hidden;
+  
+  ${({ edges }) => getEdges(edges)};
 `

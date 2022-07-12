@@ -19,26 +19,33 @@ const Toggle = ({
     .join(' ')
     .trim()
 
-  return (
-    <Wrapper isDisable={isDisable} className={classNames}>
-      {style === 'options' &&
-        options.map((option) => (
-          <Option
-            key={option.value}
-            onClick={isDisable ? undefined : handleChange.bind(this, option)}
-            active={selected.value === option.value}
-            isDisable={isDisable}
-          >
-            {option.label}
-          </Option>
-        ))}
-      {style === 'toggle' && (
+  if (style === 'toggle') {
+    return (
+      <Wrapper
+        isDisable={isDisable}
+        className={classNames}
+        onClick={isDisable ? undefined : handleChange.bind(this, !selected)}
+      >
         <ToggleButton
           className={selected ? 'active' : 'inactive'}
-          onClick={isDisable ? undefined : handleChange.bind(this, !selected)}
           isDisable={isDisable}
         />
-      )}
+      </Wrapper>
+    )
+  }
+
+  return (
+    <Wrapper isDisable={isDisable} className={classNames}>
+      {options.map((option) => (
+        <Option
+          key={option.value}
+          onClick={isDisable ? undefined : handleChange.bind(this, option)}
+          active={selected.value === option.value}
+          isDisable={isDisable}
+        >
+          {option.label}
+        </Option>
+      ))}
     </Wrapper>
   )
 }
