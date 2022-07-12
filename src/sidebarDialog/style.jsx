@@ -26,7 +26,6 @@ export const Content = styled.div`
 export const OuterWrapper = styled.div`
   display: flex;
   max-width: 1250px;
-  margin: 0 auto 36px;
   position: relative;
   border-radius: 10px;
   background: ${white};
