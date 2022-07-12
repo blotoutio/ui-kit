@@ -1,7 +1,6 @@
 import {
   Content,
   IconWrapper,
-  InnerWrapper,
   MainPanel,
   OuterWrapper,
   Sidebar,
@@ -19,15 +18,13 @@ const SidebarDialog = ({ children, sidebar, handleClose }) => {
     <Wrapper>
       <Content>
         <OuterWrapper>
-          <InnerWrapper>
-            <IconWrapper onClick={handleClose}>
-              <Close />
-            </IconWrapper>
-            {!isSinglePanel && <Sidebar edges={'left'}>{sidebar}</Sidebar>}
-            <MainPanel edges={isSinglePanel ? 'full' : 'right'}>
-              {children}
-            </MainPanel>
-          </InnerWrapper>
+          <IconWrapper onClick={handleClose}>
+            <Close />
+          </IconWrapper>
+          {!isSinglePanel && <Sidebar edges={'left'}>{sidebar}</Sidebar>}
+          <MainPanel edges={isSinglePanel ? 'full' : 'right'}>
+            {children}
+          </MainPanel>
         </OuterWrapper>
       </Content>
     </Wrapper>
