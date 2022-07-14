@@ -29,6 +29,7 @@ export const OuterWrapper = styled.div`
   position: relative;
   border-radius: 10px;
   background: ${white};
+  max-height: calc(100vh - 60px);
 `
 
 export const InnerWrapper = styled.div`
@@ -70,7 +71,6 @@ const getEdges = (edges) => {
 export const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
   max-width: 300px;
   overflow: hidden;
 
@@ -82,6 +82,6 @@ export const MainPanel = styled.div`
   flex-direction: column;
   max-width: 850px;
   overflow: hidden;
-  
+
   ${({ edges }) => getEdges(edges)};
 `

@@ -52,12 +52,14 @@ export const Modal = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
   ${({ variant }) => getModalSize(variant)}
 `
 
 export const Header = styled.div`
   display: flex;
-  padding: 41px 38px 23px;
+  padding: 23px 38px;
   justify-content: space-between;
   align-items: center;
 `
@@ -74,7 +76,7 @@ export const Close = styled.div`
 `
 
 export const Content = styled.div`
-  padding-bottom: 35px;
   text-align: left;
-  height: calc(100% - 96px);
+  flex: 1;
+  max-height: calc(100% - 66px);
 `
