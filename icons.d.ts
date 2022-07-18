@@ -98,3 +98,4 @@ export declare const Report: (props: IconInterface) => React.ReactElement
 export declare const Plus: (props: IconInterface) => React.ReactElement
 export declare const Clone: (props: IconInterface) => React.ReactElement
 export declare const Update: (props: IconInterface) => React.ReactElement
+export declare const Snapchat: (props: IconInterface) => React.ReactElement
