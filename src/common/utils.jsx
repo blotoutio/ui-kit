@@ -1,4 +1,5 @@
 import * as ReactDomServer from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom/server'
 
 export const perPageOptions = [
   {
@@ -27,7 +28,9 @@ export const extractText = (data) => {
   if (!Array.isArray(data)) return data
 
   const elementToString = (element) => {
-    return ReactDomServer.renderToStaticMarkup(element).replace(/<[^>]+>/g, '')
+    return ReactDomServer.renderToStaticMarkup(
+      <StaticRouter>{element}</StaticRouter>
+    ).replace(/<[^>]+>/g, '')
   }
 
   const tabularData = []
