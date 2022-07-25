@@ -6,7 +6,7 @@ const Toggle = ({
   handleChange,
   isDisable,
   className,
-  style = 'options',
+  variation = 'options',
 }) => {
   if (selected === undefined) {
     console.error('Selected for toggle was not provided')
@@ -14,12 +14,16 @@ const Toggle = ({
   }
 
   const toggleClass =
-    style === 'toggle' ? (selected === true ? 'toggle active' : 'toggle') : null
-  const classNames = [className, style === 'toggle' ? toggleClass : null]
+    variation === 'toggle'
+      ? selected === true
+        ? 'toggle active'
+        : 'toggle'
+      : null
+  const classNames = [className, variation === 'toggle' ? toggleClass : null]
     .join(' ')
     .trim()
 
-  if (style === 'toggle') {
+  if (variation === 'toggle') {
     return (
       <Wrapper
         isDisable={isDisable}
