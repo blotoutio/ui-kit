@@ -51,7 +51,7 @@ const DataTable = ({
 
   useEffect(() => {
     setTotalData(rows)
-  }, [JSON.stringify(extractText(rows))])
+  }, [rows && rows.length])
 
   const handleCSV = (fileName) => {
     const tableData = extractText([headers, ...totalData])

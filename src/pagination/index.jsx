@@ -50,7 +50,7 @@ export const Pagination = ({
       setEndRow(0)
       setBlockData([])
     }
-  }, [JSON.stringify(extractText(data))])
+  }, [data && data.length])
 
   const handleRowsPerPage = (e) => {
     setCurPage(1)
