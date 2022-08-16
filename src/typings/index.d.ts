@@ -77,6 +77,7 @@ interface SidebarDialogProps {
 
 interface DataTableProps {
   rows?: string[][] | React.ReactNode[][]
+  totals?: string[] | React.ReactNode[]
   headers: string[] | React.ReactNode[]
   className?: string
   Component?: React.ReactNode | React.ReactNode[]
@@ -87,6 +88,8 @@ interface DataTableProps {
   noData?: string
   perPage?: SelectValue
   searchable?: boolean
+  sortable?: boolean
+  compare?: (a, b, column, direction) => number | boolean
   type?: 'table'
   reset?: boolean
   onDoubleClick?: (index: number) => void
@@ -120,7 +123,7 @@ interface DialogProps {
 
 interface DropdownProps {
   handleChange: (value: SelectValue) => void
-  value: SelectValue
+  value: SelectValue | SelectValue[]
   category?: {
     label: string
     value: string
@@ -147,7 +150,7 @@ interface DropdownProps {
 
 interface ButtonDropdownProps {
   handleChange: (value: SelectValue) => void
-  value?: SelectValue | null
+  value?: SelectValue | SelectValue[] | null
   children: React.ReactNode | React.ReactNode[]
   className?: string
   handleAdd?: () => void
@@ -232,7 +235,7 @@ interface MultiSelectInputProps {
 interface SimpleSelectProps {
   handleChange: (value: SelectValue) => void
   handleInputChange?: (value: string) => void
-  value?: SelectValue | null
+  value?: SelectValue | SelectValue[] | null
   options?: SelectValue[]
   handleKeyDown?: (value: SelectValue) => void
   isClearable?: boolean
@@ -250,7 +253,7 @@ interface SimpleSelectProps {
 interface SimpleAsyncSelectProps {
   handleChange: (value: SelectValue[]) => void
   loadOptions: (arg0: string) => SelectValue
-  value?: SelectValue
+  value?: SelectValue | SelectValue[]
   classNamePrefix?: string
   id?: string
   isClearable?: boolean

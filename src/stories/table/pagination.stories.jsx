@@ -101,13 +101,10 @@ const rows = [
 ]
 
 export const Paginations = (args) => {
-  const [blockData, setBlockData] = useState([])
-
   return (
     <>
       <Pagination
         key={args.paginationType}
-        setBlockData={setBlockData}
         paginationType={args.paginationType}
         data={rows}
         perPage={args.perPage}
