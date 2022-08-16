@@ -31,6 +31,39 @@ export const StyledTable = styled.table`
   }
 `
 
+export const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+export const HeaderText = styled.div``
+
+export const ArrowsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding-left: 15px;
+`
+
+export const SortingArrow = styled.div`
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 4px 5px 4px;
+  border-color: transparent transparent ${neutrals40} transparent;
+  transform: rotate(0deg);
+
+  &.down {
+    transform: rotate(180deg);
+  }
+
+  &.active {
+    border-color: transparent transparent ${neutrals70} transparent;
+  }
+`
+
 export const StyledTh = styled.th`
   padding: 18px 20px;
   font-variation-settings: 'wght' 700;
@@ -48,6 +81,10 @@ export const StyledTh = styled.th`
   &:last-of-type {
     border-top-right-radius: 5px;
     border-right: 1px solid ${neutrals20};
+  }
+
+  &.sortable {
+    cursor: pointer;
   }
 `
 
@@ -137,6 +174,7 @@ export const HeaderSection = styled.div`
 export const Left = styled.div`
   display: flex;
   align-items: center;
+
   > * {
     margin-right: 24px;
   }
@@ -147,6 +185,7 @@ export const Right = styled.div`
   align-items: center;
   color: ${neutrals40};
   margin-left: auto;
+
   > * {
     margin-left: 36px;
   }

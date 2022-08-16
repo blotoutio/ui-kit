@@ -42,7 +42,10 @@ const UserTable = ({
   addColumn,
 }) => {
   const [totalData, setTotalData] = useState(rows)
-  const [blockData, setBlockData] = useState([])
+  const [pageData, setPageData] = useState({
+    pageNo: 1,
+    perPage: perPage.value,
+  })
   const [showDialog, setShowDialog] = useState(false)
 
   useEffect(() => {
@@ -168,17 +171,23 @@ const UserTable = ({
           <Pagination
             data={totalData}
             perPage={perPage}
-            setBlockData={setBlockData}
+            setPageData={setPageData}
           />
         )}
       </>
     )
   }
 
+  const currentPageData = (data, pagination) => {
+    const startRow = (pagination.pageNo - 1) * pagination.perPage + 1
+    const endRow = Math.min(data.length, pagination.pageNo * pagination.perPage)
+    return data.slice(startRow - 1, endRow)
+  }
+
   const generateRows = () => {
     let data = totalData
     if (hasPagination) {
-      data = blockData
+      data = currentPageData(data, pageData)
     }
 
     return (

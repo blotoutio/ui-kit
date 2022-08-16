@@ -1,4 +1,4 @@
-import { perPageOptions, extractText } from '../common/utils'
+import { perPageOptions } from '../common/utils'
 import { SimpleSelect } from '../select'
 import { useState, useEffect } from 'react'
 import { Section, StyledText, PgNo, FooterSection, Left, Right } from './style'
@@ -6,7 +6,6 @@ import { Section, StyledText, PgNo, FooterSection, Left, Right } from './style'
 export const Pagination = ({
   data,
   reset = true,
-  setBlockData,
   setPageData = null,
   paginationType = 'large',
   perPage = perPageOptions[2],
@@ -44,11 +43,9 @@ export const Pagination = ({
       setStartRow(updatedStartRow)
       setShowFooter(updatedShowFooter)
       setRowsPerPage(updatedRowsPerPage)
-      setBlockData(data.slice(updatedStartRow - 1, updatedEndRow))
       getPageNumbers(updatedCurPage, data.length, updatedRowsPerPage.value)
     } else {
       setEndRow(0)
-      setBlockData([])
     }
   }, [data && data.length])
 
@@ -57,7 +54,6 @@ export const Pagination = ({
     setStartRow(1)
     setRowsPerPage(e)
     setEndRow(Math.min(data.length, e.value))
-    setBlockData(data.slice(0, e.value))
     setPageData && setPageData({ pageNo: 1, perPage: e.value })
     getPageNumbers(1, data.length, e.value)
   }
@@ -116,7 +112,6 @@ export const Pagination = ({
       const endRow = Math.min(data.length, currentPage * rowsPerPage.value)
       setStartRow(startRow)
       setEndRow(endRow)
-      setBlockData(data.slice(startRow - 1, endRow))
       getPageNumbers(currentPage, data.length, rowsPerPage.value)
     }
   }

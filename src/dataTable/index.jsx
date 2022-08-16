@@ -13,6 +13,10 @@ import {
   HeaderSection,
   LoaderContainer,
   Wrapper,
+  HeaderText,
+  ArrowsContainer,
+  SortingArrow,
+  HeaderContainer,
 } from './style'
 import Input from '../input'
 import { Download, Search } from '../icons'
@@ -21,8 +25,69 @@ import { neutrals40 } from '../common/colors'
 import { Pagination } from '../pagination'
 import Spinner from '../spinner'
 
+const createHeader = (headers, sortable, sortedBy, onSort) => {
+  return (
+    <StyledHeader>
+      {headers.map((header, i) => (
+        <StyledTh
+          className={`th-${i} ${sortable && 'sortable'}`}
+          key={`th-${header}-${i}`}
+          onClick={() => sortable && onSort(i)}
+        >
+          <HeaderContainer>
+            <HeaderText>{header}</HeaderText>
+            {sortable && (
+              <ArrowsContainer>
+                <SortingArrow
+                  className={`up ${
+                    sortedBy.index === i && sortedBy.direction === 1
+                      ? 'active'
+                      : ''
+                  }`}
+                />
+                <SortingArrow
+                  className={`down  ${
+                    sortedBy.index === i && sortedBy.direction === -1
+                      ? 'active'
+                      : ''
+                  }`}
+                />
+              </ArrowsContainer>
+            )}
+          </HeaderContainer>
+        </StyledTh>
+      ))}
+    </StyledHeader>
+  )
+}
+
+const sortData = (data, column, direction, compare) => {
+  data.sort((a, b) => {
+    if (compare) {
+      return compare(a, b, column, direction)
+    } else {
+      if (typeof a[column] === 'string') {
+        if (direction > 0) {
+          return a[column].localeCompare(b[column])
+        } else {
+          return b[column].localeCompare(a[column])
+        }
+      } else {
+        if (direction > 0) {
+          return a[column] - b[column]
+        } else {
+          return b[column] - a[column]
+        }
+      }
+    }
+  })
+  return data
+}
+
 const DataTable = ({
   rows,
+  totals,
+  compare,
   noData,
   headers,
   emptyCell,
@@ -35,23 +100,51 @@ const DataTable = ({
   downloadable = true,
   searchable = true,
   hasPagination = true,
+  sortable = true,
   onSingleClick,
   onDoubleClick,
   isRowActive = () => {
     return false
   },
 }) => {
+  const defaultData = totals ? [totals, ...rows] : rows
   const [searchText, setSearchText] = useState('')
-  const [totalData, setTotalData] = useState(rows)
-  const [blockData, setBlockData] = useState([])
+  const [totalData, setTotalData] = useState([])
   const [pageData, setPageData] = useState({
     pageNo: 1,
     perPage: perPage.value,
   })
+  const [sortedBy, setSortedBy] = useState({ index: null, direction: -1 })
 
   useEffect(() => {
-    setTotalData(rows)
-  }, [rows && rows.length])
+    setTotalData(defaultData)
+  }, [rows])
+
+  const onSort = (index) => {
+    let direction = sortedBy.direction
+    if (sortedBy.index !== index) {
+      direction = 0
+    }
+
+    let data
+    switch (direction) {
+      case 1:
+        direction = -1
+        data = sortData([...rows], index, direction, compare)
+        break
+      case 0:
+        direction = 1
+        data = sortData([...rows], index, direction, compare)
+        break
+      default:
+        direction = 0
+        data = defaultData
+        break
+    }
+
+    setTotalData(data)
+    setSortedBy({ index, direction })
+  }
 
   const handleCSV = (fileName) => {
     const tableData = extractText([headers, ...totalData])
@@ -70,12 +163,12 @@ const DataTable = ({
     const totalRows = []
     const pattern = e.target.value.trim().toLowerCase()
     const tableData = extractText(rows)
-    for (const row of tableData) {
+    tableData.forEach((row, i) => {
       const text = row[0].toLowerCase()
       if (text.includes(pattern)) {
-        totalRows.push(row)
+        totalRows.push(rows[i])
       }
-    }
+    })
     setSearchText(e.target.value)
     setTotalData(totalRows)
   }
@@ -131,17 +224,22 @@ const DataTable = ({
             data={totalData}
             perPage={perPage}
             setPageData={setPageData}
-            setBlockData={setBlockData}
           />
         )}
       </>
     )
   }
 
+  const currentPageData = (data, pagination) => {
+    const startRow = (pagination.pageNo - 1) * pagination.perPage + 1
+    const endRow = Math.min(data.length, pagination.pageNo * pagination.perPage)
+    return data.slice(startRow - 1, endRow)
+  }
+
   const generateRows = () => {
     let data = totalData
     if (hasPagination) {
-      data = blockData
+      data = currentPageData(data, pageData)
     }
 
     return (
@@ -184,13 +282,7 @@ const DataTable = ({
             <StyledTable className={className}>
               {headers && headers.length > 0 && (
                 <thead>
-                  <StyledHeader>
-                    {headers.map((header, i) => (
-                      <StyledTh className={`th-${i}`} key={`th-${header}-${i}`}>
-                        {header}
-                      </StyledTh>
-                    ))}
-                  </StyledHeader>
+                  {createHeader(headers, sortable, sortedBy, onSort)}
                 </thead>
               )}
               <tbody
