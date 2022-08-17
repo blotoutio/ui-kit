@@ -100,7 +100,7 @@ const DataTable = ({
   downloadable = true,
   searchable = true,
   hasPagination = true,
-  sortable = true,
+  sortable = false,
   onSingleClick,
   onDoubleClick,
   isRowActive = () => {
