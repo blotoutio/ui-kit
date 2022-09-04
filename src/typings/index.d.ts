@@ -248,6 +248,8 @@ interface SimpleSelectProps {
   width?: number
   margin?: number
   menuPortalTarget?: Element
+  isCreatable?: boolean
+  formatCreateLabel?: (inputValue: string) => React.ReactNode
 }
 
 interface SimpleAsyncSelectProps {
@@ -267,6 +269,8 @@ interface SimpleAsyncSelectProps {
   margin?: number
   menuPortalTarget?: Element
   styles?: Record<string, number | string>[]
+  isCreatable?: boolean
+  formatCreateLabel?: (inputValue: string) => React.ReactNode
 }
 
 interface SnackbarProps {
