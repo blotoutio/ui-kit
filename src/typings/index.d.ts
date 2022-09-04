@@ -11,6 +11,11 @@ export interface SelectValue {
   [key: string]: any
 }
 
+export interface GroupSelect {
+  label: string
+  options: SelectValue[]
+}
+
 type InputAction = 'set-value' | 'input-change' | 'input-blur' | 'menu-close'
 
 export interface InputActionMeta {
@@ -236,7 +241,7 @@ interface SimpleSelectProps {
   handleChange: (value: SelectValue) => void
   handleInputChange?: (value: string) => void
   value?: SelectValue | SelectValue[] | null
-  options?: SelectValue[]
+  options?: SelectValue[] | GroupSelect[]
   handleKeyDown?: (value: SelectValue) => void
   isClearable?: boolean
   isDisabled?: boolean
