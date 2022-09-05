@@ -258,9 +258,9 @@ interface SimpleSelectProps {
 }
 
 interface SimpleAsyncSelectProps {
-  handleChange: (value: SelectValue[]) => void
-  loadOptions: (arg0: string) => SelectValue
-  value?: SelectValue | SelectValue[]
+  handleChange: (value: SelectValue) => void
+  loadOptions: (arg0: string) => Promise<SelectValue[] | GroupSelect[]>
+  value?: SelectValue | SelectValue[] | null
   classNamePrefix?: string
   id?: string
   isClearable?: boolean
