@@ -22,6 +22,13 @@ export interface InputActionMeta {
   action: InputAction
 }
 
+interface AlertProps {
+  children: React.ReactNode | React.ReactNode[]
+  onClose?: () => void
+  styles?: Record<string, number | string>
+  variant?: 'success' | 'error' | 'info' | 'warning'
+}
+
 interface BarChartProps {
   data: {
     categories: string[]
@@ -331,6 +338,7 @@ interface PaginationProps {
   setPageData?: (value: { pageNo: number; perPage: number }) => void
 }
 
+export declare const Alert: (props: AlertProps) => React.ReactElement
 export declare const BarChart: (props: BarChartProps) => React.ReactElement
 export declare const Box: (props: BoxProps) => React.ReactElement
 export declare const Button: (props: ButtonProps) => React.ReactElement

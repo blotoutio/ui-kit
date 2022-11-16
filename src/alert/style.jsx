@@ -3,8 +3,9 @@ import { getVariantColors } from '../common/utils'
 
 export const Wrapper = styled.div`
   position: fixed;
-  top: 40px;
-  right: 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 5000;
   display: flex;
   align-items: center;

@@ -1,5 +1,14 @@
 import * as ReactDomServer from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
+import { css } from 'styled-components'
+
+import {
+  errorJuice,
+  successJuice,
+  white,
+  link,
+  attentionJuice,
+} from '../common/colors'
 
 export const perPageOptions = [
   {
@@ -53,4 +62,32 @@ export const extractText = (data) => {
     }
   }
   return tabularData
+}
+
+export const getVariantColors = (variant) => {
+  switch (variant) {
+    case 'success': {
+      return css`
+        background: ${successJuice};
+        color: ${white};
+      `
+    }
+    case 'error': {
+      return css`
+        background: ${errorJuice};
+        color: ${white};
+      `
+    }
+    case 'info': {
+      return css`
+        background: ${link};
+        color: ${white};
+      `
+    }
+    case 'warning': {
+      return css`
+        background: ${attentionJuice};
+      `
+    }
+  }
 }
